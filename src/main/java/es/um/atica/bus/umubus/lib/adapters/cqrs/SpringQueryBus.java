@@ -1,11 +1,11 @@
-package es.um.atica.bus.umubus.adapters.cqrs;
+package es.um.atica.bus.umubus.lib.adapters.cqrs;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import es.um.atica.bus.umubus.domain.cqrs.Query;
-import es.um.atica.bus.umubus.domain.cqrs.QueryBus;
-import es.um.atica.bus.umubus.domain.cqrs.QueryHandler;
+import es.um.atica.bus.umubus.lib.domain.cqrs.Query;
+import es.um.atica.bus.umubus.lib.domain.cqrs.QueryBus;
+import es.um.atica.bus.umubus.lib.domain.cqrs.QueryHandler;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

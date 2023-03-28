@@ -1,8 +1,8 @@
-package es.um.atica.bus.umubus.domain.events;
+package es.um.atica.bus.umubus.lib.domain.events;
 
 import java.util.Collection;
 
-import es.um.atica.bus.umubus.domain.ddd.AggregateRoot;
+import es.um.atica.bus.umubus.lib.domain.ddd.AggregateRoot;
 
 public interface EventBus {
 

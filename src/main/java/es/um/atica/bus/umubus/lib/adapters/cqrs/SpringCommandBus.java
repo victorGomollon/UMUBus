@@ -1,4 +1,4 @@
-package es.um.atica.bus.umubus.adapters.cqrs;
+package es.um.atica.bus.umubus.lib.adapters.cqrs;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -9,9 +9,9 @@ import java.util.Map;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import es.um.atica.bus.umubus.domain.cqrs.Command;
-import es.um.atica.bus.umubus.domain.cqrs.CommandBus;
-import es.um.atica.bus.umubus.domain.cqrs.CommandHandler;
+import es.um.atica.bus.umubus.lib.domain.cqrs.Command;
+import es.um.atica.bus.umubus.lib.domain.cqrs.CommandBus;
+import es.um.atica.bus.umubus.lib.domain.cqrs.CommandHandler;
 
 @Component
 @Primary

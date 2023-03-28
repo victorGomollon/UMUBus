@@ -1,4 +1,4 @@
-package es.um.atica.bus.umubus.domain.events;
+package es.um.atica.bus.umubus.lib.domain.events;
 
 import java.util.UUID;
 
