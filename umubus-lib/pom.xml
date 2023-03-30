@@ -11,7 +11,6 @@
 
   <name>umubus-lib</name>
   <description>Bus communication library</description>
-	<packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
