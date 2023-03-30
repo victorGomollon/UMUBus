@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.filter.ForwardedHeaderFilter;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"es.um.atica.umubus_lib"})
+@ComponentScan(basePackages = {"es.um.atica.umubus_pruebas","es.um.atica.umubus_lib"})
 public class UmuBusPruebasApplication {
 
 	@Bean
