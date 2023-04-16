@@ -29,5 +29,7 @@ public abstract class Event {
     }
     
     public abstract String getAggregateId();
+    
+    public abstract String getTypeFormat();
 
 }

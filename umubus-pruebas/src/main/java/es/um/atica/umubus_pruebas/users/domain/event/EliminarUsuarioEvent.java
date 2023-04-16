@@ -21,4 +21,8 @@ public class EliminarUsuarioEvent extends Event {
     public String getAggregateId() {
         return this.getUserId();
     }
+    
+    //TODO: Es necesario??¿¿
+    @Override
+    public String getTypeFormat() { return "events.1.%s"; }
 }
