@@ -13,7 +13,7 @@ public class ActualizarUsuarioEvent extends Event {
     }
 
     public static ActualizarUsuarioEvent of (Usuario user, String changelog) {
-        return new ActualizarUsuarioEvent(user.getId().getValue(), changelog);
+        return new ActualizarUsuarioEvent(user.getId(), changelog);
     }
 
     public String getUserId() { return userId; }

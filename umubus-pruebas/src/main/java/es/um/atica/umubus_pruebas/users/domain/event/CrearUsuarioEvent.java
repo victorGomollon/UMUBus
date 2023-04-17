@@ -12,7 +12,7 @@ public class CrearUsuarioEvent extends Event {
     }
 
     public static CrearUsuarioEvent of (Usuario user) {
-        return new CrearUsuarioEvent(user.getId().getValue());
+        return new CrearUsuarioEvent(user.getId());
     }
 
     public String getUserId() { return userId; }

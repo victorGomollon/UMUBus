@@ -1,6 +1,5 @@
 package es.um.atica.umubus_pruebas.users.application.command;
 
-import es.um.atica.umubus_pruebas.users.domain.model.UsuarioId;
 import es.um.atica.umubus_lib.domain.cqrs.SyncCommand;
 
 public class CrearUsuarioCommand extends SyncCommand<Void> {
@@ -15,7 +14,6 @@ public class CrearUsuarioCommand extends SyncCommand<Void> {
 
     public static CrearUsuarioCommand of(String id, String name, int age) {
         // Validate Command Data for UI
-        UsuarioId.of(id);
         return new CrearUsuarioCommand(id, name, age);
     }
 
