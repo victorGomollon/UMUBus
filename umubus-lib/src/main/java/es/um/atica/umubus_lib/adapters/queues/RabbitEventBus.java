@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import es.um.atica.umubus_lib.domain.events.Event;
 import es.um.atica.umubus_lib.domain.events.EventBus;
+import es.um.atica.umubus_lib.domain.queues.MessageEvent;
 import es.um.atica.umubus_lib.domain.queues.UMUBUSOutputChannel;
 //import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,8 @@ public class RabbitEventBus implements EventBus {
     @Override
     public void publish(Event event) {
         log.info("Sending event: {}", event);
-        source.output().send(MessageBuilder.withPayload(event).build());
+        MessageEvent messageEvent = MessageEvent.of(event);
+        source.output().send(MessageBuilder.withPayload(messageEvent).build());
         log.info("Message sent successfully");
     }
 }

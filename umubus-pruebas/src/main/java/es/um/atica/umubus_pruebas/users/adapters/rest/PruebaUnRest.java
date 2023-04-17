@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.um.atica.umubus_lib.domain.queues.IPublisherChannel;
+import es.um.atica.umubus_lib.domain.queues.MessageEvent;
 import es.um.atica.umubus_pruebas.users.domain.event.CrearUsuarioEvent;
 import es.um.atica.umubus_pruebas.users.domain.model.Usuario;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,9 @@ public class PruebaUnRest {
 	@PostMapping
 	public ResponseEntity getAllUserById(@RequestBody String id) {
 		Usuario user = Usuario.of(id,"PEdro", 30);
-		publisher.sendMessage(CrearUsuarioEvent.of(user));
+		CrearUsuarioEvent event = CrearUsuarioEvent.of(user);
+		MessageEvent messageEvent = MessageEvent.of(event);
+		publisher.sendMessage(messageEvent);
 		return ResponseEntity.accepted().build();
 	}
 }

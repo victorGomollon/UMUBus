@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import es.um.atica.umubus_lib.domain.events.Event;
 import es.um.atica.umubus_lib.domain.queues.IPublisherChannel;
+import es.um.atica.umubus_lib.domain.queues.MessageEvent;
 import es.um.atica.umubus_lib.domain.queues.UMUBUSOutputChannel;
 //import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,9 +22,10 @@ public class PublisherChannelImpl implements IPublisherChannel {
         this.source = source;
     }
     @Override
-    public void sendMessage(Event event) {
-        log.info("Sending event: {}", event);
-        source.output().send(MessageBuilder.withPayload(event).build());
+    public void sendMessage(MessageEvent messageEvent) {
+//        log.info("Sending event: {}", event);
+//        MessageEvent messageEvent = MessageEvent.of(event);
+        source.output().send(MessageBuilder.withPayload(messageEvent).build());
         log.info("Message sent successfully");
     }
 }
