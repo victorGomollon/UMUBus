@@ -29,11 +29,11 @@ public class CrearUsuarioCommandHandler implements SyncCommandHandler<Void,Crear
         // Idempotency
         usersReadRepository.findUser(command.getId())
             .ifPresentOrElse(
-                (u)-> { throw new UnsupportedOperationException(String.format("Usuario ya creado %s",u.getId().getValue())); },
+                (u)-> { throw new UnsupportedOperationException(String.format("Usuario ya creado %s",u.getId())); },
                 () -> {
                     Usuario usr = UsuarioFactory
                         .createUser(
-                            UsuarioId.of(command.getId()),
+                            command.getId(),
                             command.getName(),
                             command.getAge());
                     usr.createUser();

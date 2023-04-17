@@ -12,7 +12,7 @@ public class EliminarUsuarioEvent extends Event {
     }
 
     public static EliminarUsuarioEvent of (Usuario user) {
-        return new EliminarUsuarioEvent(user.getId().getValue());
+        return new EliminarUsuarioEvent(user.getId());
     }
 
     public String getUserId() { return userId; }

@@ -23,14 +23,14 @@ public class UserEntity {
 
     public static UserEntity of (Usuario usr) {
         return new UserEntity(
-            usr.getId().getValue(),
+            usr.getId(),
             usr.getName(),
             usr.getAge());
     }
 
     public Usuario toModel() {
         return UsuarioFactory.createUser(
-            UsuarioId.of(this.id), 
+            this.id, 
             this.name,
             this.age);
     }
