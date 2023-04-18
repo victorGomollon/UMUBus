@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import es.um.atica.umubus_lib.domain.events.EventBus;
 import es.um.atica.umubus_pruebas.users.domain.event.CrearUsuarioEvent;
 import es.um.atica.umubus_pruebas.users.domain.model.Usuario;
-import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
