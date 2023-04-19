@@ -9,7 +9,7 @@ import java.util.UUID;
 public abstract class Event {
 
     private EventId id;
-    private LocalDateTime date;
+//    private LocalDateTime date;
 
     public Event() {
         this(Collections.emptyMap());
@@ -17,16 +17,16 @@ public abstract class Event {
 
     public Event(Map<String, Object> data) {
         this.id = new EventId(UUID.randomUUID());
-        this.date = LocalDateTime.now(ZoneId.of("UTC"));
+//        this.date = LocalDateTime.now(ZoneId.of("UTC"));
     }
 
     public EventId getId() {
         return id;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
+//    public LocalDateTime getDate() {
+//        return date;
+//    }
     
     public abstract String getAggregateId();
 

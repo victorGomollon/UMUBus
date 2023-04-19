@@ -7,7 +7,6 @@ import javax.persistence.Table;
 
 import es.um.atica.umubus_pruebas.users.domain.factory.UsuarioFactory;
 import es.um.atica.umubus_pruebas.users.domain.model.Usuario;
-import es.um.atica.umubus_pruebas.users.domain.model.UsuarioId;
 
 @Entity
 @Table(name="USERS",schema="PRUEBAS")
@@ -23,14 +22,14 @@ public class UserEntity {
 
     public static UserEntity of (Usuario usr) {
         return new UserEntity(
-            usr.getId().getValue(),
+            usr.getId(),
             usr.getName(),
             usr.getAge());
     }
 
     public Usuario toModel() {
         return UsuarioFactory.createUser(
-            UsuarioId.of(this.id), 
+            this.id, 
             this.name,
             this.age);
     }

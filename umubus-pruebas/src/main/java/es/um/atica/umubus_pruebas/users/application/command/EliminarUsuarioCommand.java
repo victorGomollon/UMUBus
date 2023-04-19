@@ -1,6 +1,5 @@
 package es.um.atica.umubus_pruebas.users.application.command;
 
-import es.um.atica.umubus_pruebas.users.domain.model.UsuarioId;
 import es.um.atica.umubus_lib.domain.cqrs.Command;
 
 public class EliminarUsuarioCommand extends Command {
@@ -13,7 +12,6 @@ public class EliminarUsuarioCommand extends Command {
 
     public static EliminarUsuarioCommand of(String id) {
         // Validate Command Data for UI
-        UsuarioId.of(id);
         return new EliminarUsuarioCommand(id);
     }
 
