@@ -47,7 +47,8 @@ public class DeleteCommandHandlerTests {
         assertEquals(ID_USER, user.getValue().getId());
         // Y se lanza el evento
         ArgumentCaptor<EliminarUsuarioEvent> event = ArgumentCaptor.forClass(EliminarUsuarioEvent.class);
-        Mockito.verify(eventBus).publish(event.capture());
+//        Mockito.verify(eventBus).publish(event.capture());
+        Mockito.verify(eventBus).publish(event.capture().toString());
         assertEquals(ID_USER, event.getValue().getAggregateId());
     }
 
@@ -64,7 +65,8 @@ public class DeleteCommandHandlerTests {
         assertEquals(0, user.getAllValues().size());
         // Y no se lanza ningún evento
         ArgumentCaptor<EliminarUsuarioEvent> event = ArgumentCaptor.forClass(EliminarUsuarioEvent.class);
-        Mockito.verify(eventBus,never()).publish(event.capture());
+//        Mockito.verify(eventBus,never()).publish(event.capture());
+        Mockito.verify(eventBus,never()).publish(event.capture().toString());
         assertEquals(0, event.getAllValues().size());
     }
 

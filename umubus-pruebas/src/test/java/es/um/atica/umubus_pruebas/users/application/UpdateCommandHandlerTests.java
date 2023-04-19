@@ -51,7 +51,8 @@ public class UpdateCommandHandlerTests {
         assertEquals(ID_USER_NAME, user.getValue().getName());
         // Y se lanza el evento
         ArgumentCaptor<ActualizarUsuarioEvent> event = ArgumentCaptor.forClass(ActualizarUsuarioEvent.class);
-        Mockito.verify(eventBus).publish(event.capture());
+//        Mockito.verify(eventBus).publish(event.capture());
+        Mockito.verify(eventBus).publish(event.capture().toString());
         assertEquals(ID_USER, event.getValue().getAggregateId());
     }
 
@@ -68,7 +69,8 @@ public class UpdateCommandHandlerTests {
         assertEquals(0, user.getAllValues().size());
         // Y no se lanza el evento
         ArgumentCaptor<ActualizarUsuarioEvent> event = ArgumentCaptor.forClass(ActualizarUsuarioEvent.class);
-        Mockito.verify(eventBus,never()).publish(event.capture());
+//        Mockito.verify(eventBus,never()).publish(event.capture());
+        Mockito.verify(eventBus,never()).publish(event.capture().toString());
         assertEquals(0, event.getAllValues().size());
     }
 

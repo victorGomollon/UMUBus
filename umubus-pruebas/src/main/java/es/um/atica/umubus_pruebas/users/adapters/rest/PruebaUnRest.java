@@ -25,7 +25,8 @@ public class PruebaUnRest {
 	@PostMapping
 	public ResponseEntity getAllUserById(@RequestBody String id) {
 		Usuario user = Usuario.of(id,"Pedro", 30);
-		eventBus.publish(CrearUsuarioEvent.of(user));
+//		eventBus.publish(CrearUsuarioEvent.of(user));
+		eventBus.publish(id);
 		return ResponseEntity.accepted().build();
 	}
 }
