@@ -7,7 +7,12 @@ public class CrearUsuarioEvent extends Event {
 
     private String userId;
 
+    public CrearUsuarioEvent() {
+        super();
+    }
+    
     private CrearUsuarioEvent(String id) {
+    	super();
         this.userId = id;
     }
 
@@ -23,6 +28,11 @@ public class CrearUsuarioEvent extends Event {
     }
     
     //TODO: Es necesario??¿¿
+//    @Override
+//    public String getTypeFormat() { return "events.1.%s"; }
+    
     @Override
-    public String getTypeFormat() { return "events.1.%s"; }
+    public String toString() { 
+        return super.toString() + String.format("[userId:%s]",userId);
+    }
 }

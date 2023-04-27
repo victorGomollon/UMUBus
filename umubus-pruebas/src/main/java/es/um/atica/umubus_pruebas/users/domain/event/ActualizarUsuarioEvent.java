@@ -8,7 +8,12 @@ public class ActualizarUsuarioEvent extends Event {
     private String userId;
     private String changelog;
 
+    public ActualizarUsuarioEvent() {
+    	super();
+    }
+    
     private ActualizarUsuarioEvent(String id, String changelog) {
+    	super();
         this.userId = id; this.changelog = changelog;
     }
 
@@ -26,6 +31,6 @@ public class ActualizarUsuarioEvent extends Event {
     }
     
     //TODO: Es necesario??¿¿
-    @Override
-    public String getTypeFormat() { return "events.1.%s"; }
+//    @Override
+//    public String getTypeFormat() { return "events.1.%s"; }
 }

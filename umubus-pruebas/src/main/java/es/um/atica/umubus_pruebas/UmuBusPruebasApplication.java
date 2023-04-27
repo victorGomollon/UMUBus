@@ -13,10 +13,10 @@ import org.springframework.web.filter.ForwardedHeaderFilter;
 import es.um.atica.umubus_lib.adapters.events.RabbitEventBus;
 import es.um.atica.umubus_lib.domain.events.Event;
 import es.um.atica.umubus_lib.domain.events.EventBus;
-import es.um.atica.umubus_pruebas.users.adapters.events.UserAllConsumer;
-import es.um.atica.umubus_pruebas.users.adapters.events.UserCreatedConsumer;
-import es.um.atica.umubus_pruebas.users.adapters.events.UserCreatedConsumerOther;
-import es.um.atica.umubus_pruebas.users.adapters.events.UserDeletedConsumer;
+import es.um.atica.umubus_pruebas.users.adapters.events.UsuarioAllConsumer;
+import es.um.atica.umubus_pruebas.users.adapters.events.CrearUsuarioConsumer;
+import es.um.atica.umubus_pruebas.users.adapters.events.CrearUsuarioConsumerOther;
+import es.um.atica.umubus_pruebas.users.adapters.events.EliminarUsuarioConsumer;
 import es.um.atica.umubus_pruebas.users.domain.event.CrearUsuarioEvent;
 import es.um.atica.umubus_pruebas.users.domain.event.EliminarUsuarioEvent;
 import es.um.atica.umubus_pruebas.users.domain.event.UsuarioEvent;
@@ -36,48 +36,48 @@ public class UmuBusPruebasApplication {
 	
 	//No quiero tener que depender de declarar los beans al arrancar...meterlo en un fichero de configuración (Por lo menos el supplier)
 	@Autowired
-	private RabbitEventBus springEventBus;
+	private RabbitEventBus eventBus;
 
 	@Autowired
-	private UserCreatedConsumer userCreatedConsumer;
+	private CrearUsuarioConsumer crearUsuarioConsumer;
 
 	@Autowired
-	private UserCreatedConsumerOther userCreatedConsumerOther;
+	private CrearUsuarioConsumerOther crearUsuarioConsumerOther;
 
 	@Autowired
-	private UserAllConsumer userAllConsumer;
+	private UsuarioAllConsumer usuarioAllConsumer;
 
 	@Autowired
-	private UserDeletedConsumer userDeletedConsumer;
+	private EliminarUsuarioConsumer eliminarUsuarioConsumer;
 	
 	@Bean
-	public Supplier<Event> eventProducer() {
-		return springEventBus;
+	public Supplier<Event> eventProcessor() {
+		return eventBus;
 	}
 
 	@Bean
-	public Consumer<CrearUsuarioEvent> createdConsumer() {
-		return userCreatedConsumer;
+	public Consumer<CrearUsuarioEvent> crearConsumer() {
+		return crearUsuarioConsumer;
 	}
 
 	@Bean
-	public Consumer<CrearUsuarioEvent> createdConsumer2() {
-		return userCreatedConsumerOther;
+	public Consumer<CrearUsuarioEvent> crearConsumer2() {
+		return crearUsuarioConsumerOther;
 	}
 
 	@Bean
 	public Consumer<UsuarioEvent> allConsumer() {
-		return userAllConsumer;
+		return usuarioAllConsumer;
 	}
 
 	@Bean
-	public Consumer<EliminarUsuarioEvent> deletedConsumer() {
-		return userDeletedConsumer;
+	public Consumer<EliminarUsuarioEvent> eliminarConsumer() {
+		return eliminarUsuarioConsumer;
 	}
 
 	@Bean
 	public EventBus eventTypeResolver() {
-		return springEventBus;
+		return eventBus;
 	}
 
 }

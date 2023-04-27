@@ -16,6 +16,4 @@ public class RabbitEventBus extends RabbitProcessorEvent<Event> implements Event
         // Store into queue
         addEvent(event);    
     }
-
-    
 }

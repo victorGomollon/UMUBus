@@ -19,8 +19,8 @@ public class UsuarioEvent extends Event {
     }
 
     //TODO: Es necesario??¿¿
-    @Override
-    public String getTypeFormat() { return "events.1.%s"; }
+//    @Override
+//    public String getTypeFormat() { return "events.1.%s"; }
 
     @Override
     public String toString() { 

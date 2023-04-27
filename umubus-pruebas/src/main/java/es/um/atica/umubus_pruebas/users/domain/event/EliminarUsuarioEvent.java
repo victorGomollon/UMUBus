@@ -7,7 +7,12 @@ public class EliminarUsuarioEvent extends Event {
 
     private String userId;
 
+    public EliminarUsuarioEvent() {
+    	super();
+    }
+    
     private EliminarUsuarioEvent(String id) {
+    	super();
         this.userId = id;
     }
 
@@ -23,6 +28,6 @@ public class EliminarUsuarioEvent extends Event {
     }
     
     //TODO: Es necesario??¿¿
-    @Override
-    public String getTypeFormat() { return "events.1.%s"; }
+//    @Override
+//    public String getTypeFormat() { return "events.1.%s"; }
 }
