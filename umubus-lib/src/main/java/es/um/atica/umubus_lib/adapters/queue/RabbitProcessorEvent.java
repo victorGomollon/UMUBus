@@ -4,21 +4,23 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import es.um.atica.umubus_lib.domain.events.Event;
+import es.um.atica.umubus_lib.domain.queue.CloudEventMessageUMU;
 import es.um.atica.umubus_lib.domain.queue.ProcessorEvent;
 
-public class RabbitProcessorEvent<T extends Event> implements ProcessorEvent<Event>{
+public class RabbitProcessorEvent<T extends CloudEventMessageUMU> implements ProcessorEvent<CloudEventMessageUMU>{
 
-    private Queue<Event> queue = new ConcurrentLinkedQueue<>();
+    private Queue<CloudEventMessageUMU> queue = new ConcurrentLinkedQueue<>();
 
     @Override
-    public Event get() {
+    public CloudEventMessageUMU get() {
         // Send to message broker
         return queue.poll();
     }
     
     public void addEvent(Event event) {
         // Store into queue
-        queue.add(event);    
+    	CloudEventMessageUMU cEMU = CloudEventMessageUMU.of(event);
+        queue.add(cEMU);    
     }
 
 }

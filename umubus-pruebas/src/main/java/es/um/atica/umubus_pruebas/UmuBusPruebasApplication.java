@@ -13,6 +13,7 @@ import org.springframework.web.filter.ForwardedHeaderFilter;
 import es.um.atica.umubus_lib.adapters.events.RabbitEventBus;
 import es.um.atica.umubus_lib.domain.events.Event;
 import es.um.atica.umubus_lib.domain.events.EventBus;
+import es.um.atica.umubus_lib.domain.queue.CloudEventMessageUMU;
 import es.um.atica.umubus_pruebas.users.adapters.events.UsuarioAllConsumer;
 import es.um.atica.umubus_pruebas.users.adapters.events.CrearUsuarioConsumer;
 import es.um.atica.umubus_pruebas.users.adapters.events.CrearUsuarioConsumerOther;
@@ -51,7 +52,7 @@ public class UmuBusPruebasApplication {
 	private EliminarUsuarioConsumer eliminarUsuarioConsumer;
 	
 	@Bean
-	public Supplier<Event> eventProcessor() {
+	public Supplier<CloudEventMessageUMU> eventProcessor() {
 		return eventBus;
 	}
 
