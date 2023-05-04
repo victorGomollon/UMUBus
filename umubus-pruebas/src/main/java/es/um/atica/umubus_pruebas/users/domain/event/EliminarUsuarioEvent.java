@@ -22,12 +22,4 @@ public class EliminarUsuarioEvent extends Event {
 
     public String getUserId() { return userId; }
 
-    @Override
-    public String getAggregateId() {
-        return this.getUserId();
-    }
-    
-    //TODO: Es necesario??¿¿
-//    @Override
-//    public String getTypeFormat() { return "events.1.%s"; }
 }

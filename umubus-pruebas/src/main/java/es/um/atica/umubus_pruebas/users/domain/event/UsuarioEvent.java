@@ -14,15 +14,6 @@ public class UsuarioEvent extends Event {
     }
 
     @Override
-    public String getAggregateId() {
-        return this.userId;
-    }
-
-    //TODO: Es necesario??¿¿
-//    @Override
-//    public String getTypeFormat() { return "events.1.%s"; }
-
-    @Override
     public String toString() { 
         return super.toString() + String.format("[userId:%s]",userId);
     }

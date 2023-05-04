@@ -1,6 +1,7 @@
 package es.um.atica.umubus_lib.adapters.events;
 
 import org.springframework.context.annotation.Primary;
+import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 import es.um.atica.umubus_lib.adapters.queue.RabbitProcessorEvent;
@@ -9,7 +10,7 @@ import es.um.atica.umubus_lib.domain.events.EventBus;
 
 @Component
 @Primary
-public class RabbitEventBus extends RabbitProcessorEvent<Event> implements EventBus  {
+public class RabbitEventBus extends RabbitProcessorEvent<Message<Event>> implements EventBus  {
 
     @Override
     public void publish(Event event) {

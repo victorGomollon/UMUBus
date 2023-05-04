@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.messaging.Message;
 import org.springframework.web.filter.ForwardedHeaderFilter;
 
 import es.um.atica.umubus_lib.adapters.events.RabbitEventBus;
@@ -51,27 +52,27 @@ public class UmuBusPruebasApplication {
 	private EliminarUsuarioConsumer eliminarUsuarioConsumer;
 	
 	@Bean
-	public Supplier<Event> eventProcessor() {
+	public Supplier<Message<Event>> eventProcessor() {
 		return eventBus;
 	}
 
 	@Bean
-	public Consumer<CrearUsuarioEvent> crearConsumer() {
+	public Consumer<Message<CrearUsuarioEvent>> crearConsumer() {
 		return crearUsuarioConsumer;
 	}
 
 	@Bean
-	public Consumer<CrearUsuarioEvent> crearConsumer2() {
+	public Consumer<Message<CrearUsuarioEvent>> crearConsumer2() {
 		return crearUsuarioConsumerOther;
 	}
 
 	@Bean
-	public Consumer<UsuarioEvent> allConsumer() {
+	public Consumer<Message<UsuarioEvent>> allConsumer() {
 		return usuarioAllConsumer;
 	}
 
 	@Bean
-	public Consumer<EliminarUsuarioEvent> eliminarConsumer() {
+	public Consumer<Message<EliminarUsuarioEvent>> eliminarConsumer() {
 		return eliminarUsuarioConsumer;
 	}
 

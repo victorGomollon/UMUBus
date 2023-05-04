@@ -23,15 +23,6 @@ public class CrearUsuarioEvent extends Event {
     public String getUserId() { return userId; }
 
     @Override
-    public String getAggregateId() {
-        return this.getUserId();
-    }
-    
-    //TODO: Es necesario??¿¿
-//    @Override
-//    public String getTypeFormat() { return "events.1.%s"; }
-    
-    @Override
     public String toString() { 
         return super.toString() + String.format("[userId:%s]",userId);
     }
