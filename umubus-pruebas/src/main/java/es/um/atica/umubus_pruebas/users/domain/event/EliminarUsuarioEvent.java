@@ -7,18 +7,19 @@ public class EliminarUsuarioEvent extends Event {
 
     private String userId;
 
+    public EliminarUsuarioEvent() {
+    	super();
+    }
+    
     private EliminarUsuarioEvent(String id) {
+    	super();
         this.userId = id;
     }
 
     public static EliminarUsuarioEvent of (Usuario user) {
-        return new EliminarUsuarioEvent(user.getId().getValue());
+        return new EliminarUsuarioEvent(user.getId());
     }
 
     public String getUserId() { return userId; }
 
-    @Override
-    public String getAggregateId() {
-        return this.getUserId();
-    }
 }

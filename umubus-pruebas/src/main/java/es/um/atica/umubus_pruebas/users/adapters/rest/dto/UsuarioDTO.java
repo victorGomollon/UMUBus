@@ -16,7 +16,7 @@ public class UsuarioDTO {
     public static UsuarioDTO of(Usuario user) {
         return UsuarioDTO
             .builder()
-            .id(user.getId().getValue())
+            .id(user.getId())
             .name(user.getName())
             .age(user.getAge())
             .build();

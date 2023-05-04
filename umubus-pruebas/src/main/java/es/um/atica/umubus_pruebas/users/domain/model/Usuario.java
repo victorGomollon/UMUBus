@@ -9,20 +9,20 @@ import es.um.atica.umubus_pruebas.users.domain.event.ActualizarUsuarioEvent;
 
 public class Usuario implements AggregateRoot {
 
-    private UsuarioId id;
+    private String id;
     private String name;
     private int age;
     private EventCollection events = new EventCollection();
 
-    private Usuario(UsuarioId id, String name, int age) {
+    private Usuario(String id, String name, int age) {
         this.id = id; this.name = name; this.age = age;
     }
 
-    public static Usuario of (UsuarioId id, String name, int age) {
+    public static Usuario of (String id, String name, int age) {
         return new Usuario(id,name,age);
     }
 
-    public UsuarioId getId() { return id; }
+    public String getId() { return id; }
     public String getName() { return name; }
     public int getAge() { return age; }
 

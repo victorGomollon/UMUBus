@@ -2,7 +2,6 @@ package es.um.atica.umubus_pruebas.users.application.command;
 
 import java.util.Optional;
 
-import es.um.atica.umubus_pruebas.users.domain.model.UsuarioId;
 import es.um.atica.umubus_lib.domain.cqrs.Command;
 
 public class ActualizarUsuarioCommand extends Command {
@@ -17,7 +16,6 @@ public class ActualizarUsuarioCommand extends Command {
 
     public static ActualizarUsuarioCommand of(String id, Optional<String> name, Optional<Integer> age) {
         // Validate Command Data for UI
-        UsuarioId.of(id);
         if (name.isPresent()) name.get();
         if (age.isPresent()) age.get();
         return new ActualizarUsuarioCommand(id, name, age);

@@ -1,33 +1,27 @@
 package es.um.atica.umubus_lib.domain.events;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Collections;
-import java.util.Map;
-import java.util.UUID;
+public class Event {
 
-public abstract class Event {
-
-    private EventId id;
-    private LocalDateTime date;
+    private String type;
+    private int version;
 
     public Event() {
-        this(Collections.emptyMap());
-    }
-
-    public Event(Map<String, Object> data) {
-        this.id = new EventId(UUID.randomUUID());
-        this.date = LocalDateTime.now(ZoneId.of("UTC"));
-    }
-
-    public EventId getId() {
-        return id;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
+    	this(1);
     }
     
-    public abstract String getAggregateId();
+    public Event(int version) {
+        this.version = version;
+        this.type = String.format(this.getTypeFormat(),this.getClass().getName());
+    }
 
+    public String getType() { return this.type; }
+
+    public String toString() {
+        return String.format("[version:%s][type:%s]",version, type);
+    }
+
+    public String getTypeFormat() {
+    	return "events." + version + ".%s";
+    }
+    
 }

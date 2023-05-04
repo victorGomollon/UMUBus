@@ -8,20 +8,21 @@ public class ActualizarUsuarioEvent extends Event {
     private String userId;
     private String changelog;
 
+    public ActualizarUsuarioEvent() {
+    	super();
+    }
+    
     private ActualizarUsuarioEvent(String id, String changelog) {
+    	super();
         this.userId = id; this.changelog = changelog;
     }
 
     public static ActualizarUsuarioEvent of (Usuario user, String changelog) {
-        return new ActualizarUsuarioEvent(user.getId().getValue(), changelog);
+        return new ActualizarUsuarioEvent(user.getId(), changelog);
     }
 
     public String getUserId() { return userId; }
 
     public String getChangelog() { return changelog; }
 
-    @Override
-    public String getAggregateId() {
-        return this.getUserId();
-    }
 }
