@@ -1,9 +1,14 @@
 package es.um.atica.umubus_lib.domain.events;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Event {
 
     private String type;
     private int version;
+    private Map<String, String> metaData;
 
     public Event() {
     	this(1);
@@ -23,5 +28,29 @@ public class Event {
     public String getTypeFormat() {
     	return "events." + version + ".%s";
     }
+
+    public Map getMetaData() {
+    	return metaData;
+    }
+    
+  public void setMetaData(){
+	  metaData = new HashMap<>();
+
+      Class<?> clase = this.getClass();
+      Field[] atributos = clase.getDeclaredFields();
+
+      try {
+          for(Field field : atributos) {
+              field.setAccessible(true);
+              String name = field.getName();
+              String value = (String)field.get(this);
+              metaData.put(name, value);
+          }
+      }catch(IllegalAccessException iae) {
+          iae.printStackTrace();
+      }catch(Exception e) {
+              e.printStackTrace();
+      }
+  }
     
 }

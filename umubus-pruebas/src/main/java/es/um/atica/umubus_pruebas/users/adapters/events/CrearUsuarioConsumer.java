@@ -17,7 +17,8 @@ public class CrearUsuarioConsumer implements Consumer<Message<CrearUsuarioEvent>
     	CrearUsuarioEvent cUE = message.getPayload();
     	Event event = message.getPayload();
         System.err.println(">>>EVENTO USER CREATED: " + cUE);
-        System.err.println(">>>EVENTO USER CREATED: " + event);
+        System.err.println(">>>EVENTO USER CREATED USER_ID: " + cUE.getUserId());
+        System.err.println(">>>EVENTO USER CREATED USER_ID METADATA: " + event.getMetaData().get("userId"));
     }
     
 //public class CrearUsuarioConsumer extends RabbitConsumerEvent<CrearUsuarioEvent> {
