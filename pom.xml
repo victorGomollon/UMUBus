@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>es.um.atica</groupId>
-	<artifactId>umubus</artifactId>
+	<artifactId>umubusproject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<name>ProyectoBase</name>
@@ -12,7 +12,7 @@
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>umubus-lib</module>
-		<module>umubus-pruebas</module>
+		<module>umubus</module>
+		<module>umuexample</module>
 	</modules>
 </project>
