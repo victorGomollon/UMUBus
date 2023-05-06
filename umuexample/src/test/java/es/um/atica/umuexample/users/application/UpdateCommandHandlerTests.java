@@ -52,7 +52,7 @@ public class UpdateCommandHandlerTests {
         // Y se lanza el evento
         ArgumentCaptor<ActualizarUsuarioEvent> event = ArgumentCaptor.forClass(ActualizarUsuarioEvent.class);
         Mockito.verify(eventBus).publish(event.capture());
-//        assertEquals(ID_USER, event.getValue().getAggregateId());	TODO: Sustituir por coger la informacion del map
+        assertEquals(ID_USER, event.getValue().getMetaData().get("userId"));
     }
 
     @Test

@@ -46,8 +46,6 @@ public class Event {
               String value = (String)field.get(this);
               metaData.put(name, value);
           }
-      }catch(IllegalAccessException iae) {
-          iae.printStackTrace();
       }catch(Exception e) {
               e.printStackTrace();
       }

@@ -48,7 +48,7 @@ public class DeleteCommandHandlerTests {
         // Y se lanza el evento
         ArgumentCaptor<EliminarUsuarioEvent> event = ArgumentCaptor.forClass(EliminarUsuarioEvent.class);
         Mockito.verify(eventBus).publish(event.capture());
-//        assertEquals(ID_USER, event.getValue().getAggregateId()); TODO: Sustituir por coger la informacion del map
+        assertEquals(ID_USER, event.getValue().getMetaData().get("userId"));
     }
 
     @Test
