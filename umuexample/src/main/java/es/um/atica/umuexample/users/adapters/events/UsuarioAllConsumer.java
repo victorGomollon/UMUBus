@@ -2,11 +2,11 @@ package es.um.atica.umuexample.users.adapters.events;
 
 import java.util.function.Consumer;
 
+import org.springframework.context.event.EventListener;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 import es.um.atica.umuexample.users.domain.event.UsuarioEvent;
-//import es.um.atica.umubus.adapters.queue.RabbitConsumerEvent;
 
 @Component
 public class UsuarioAllConsumer implements Consumer<Message<UsuarioEvent>> {
@@ -16,13 +16,10 @@ public class UsuarioAllConsumer implements Consumer<Message<UsuarioEvent>> {
     	UsuarioEvent uE = message.getPayload();
         System.err.println(">>>EVENTO USER ????: " + uE);
     }
-
-
-//public class UsuarioAllConsumer extends RabbitConsumerEvent<UsuarioEvent> {
-    
-//    @Override
-//    public void accept(UserCreated t) {
-//        System.err.println(">>>EVENTO USER CREATED: "+t);
-//    }
 	
+	@EventListener
+	public void accept(UsuarioEvent event) {
+		System.err.println(">>>EVENTO USER ????: " + event);
+    }
+
 }

@@ -28,7 +28,6 @@ public class RabbitProcessorEvent<T extends Message<Event>> implements Processor
     
     public void addEvent(Event event) {
         // Store into queue
-    	event.setMetaData();
     	Message<Event> messageEvent =  CloudEventMessageBuilder.withData(event)
     			.setSpecVersion("1.0")
     			.setId(UUID.randomUUID().toString())
