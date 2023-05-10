@@ -12,5 +12,4 @@ public class ErrorDTO {
     private String exception;
     private String path;
     private String method;
-    private String principal;
 }

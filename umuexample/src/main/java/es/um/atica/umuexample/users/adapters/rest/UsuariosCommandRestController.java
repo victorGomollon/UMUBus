@@ -26,9 +26,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Users Endpoints")
+@Tag(name = "Usuarios Endpoints")
 @RestController
-@RequestMapping(value="/pruebas/v1")
+@RequestMapping(value="/umuexample")
 public class UsuariosCommandRestController {
     
     @Autowired
@@ -38,9 +38,8 @@ public class UsuariosCommandRestController {
     private SyncCommandBus syncCommandBus;
 
     @Operation(
-        description = "Create new user",
+        description = "Crear nuevo usuario",
         responses = {
-            @ApiResponse(responseCode = "401", ref = "unauthorized"),
             @ApiResponse(responseCode = "403", ref = "forbidden_post"),
             @ApiResponse(responseCode = "409", ref = "conflict"),
             @ApiResponse(responseCode = "200", ref = "ok_user"),
@@ -54,9 +53,8 @@ public class UsuariosCommandRestController {
     }
 
     @Operation(
-        description = "Update existing user",
+        description = "Actualizar usuario existente",
         responses = {
-            @ApiResponse(responseCode = "401", ref = "unauthorized"),
             @ApiResponse(responseCode = "403", ref = "forbidden_put"),
             @ApiResponse(responseCode = "200", ref = "ok_user"),
         }
@@ -69,9 +67,8 @@ public class UsuariosCommandRestController {
     }
 
     @Operation(
-        description = "Delete existing user",
+        description = "Eliminar usuario existente",
         responses = {
-            @ApiResponse(responseCode = "401", ref = "unauthorized"),
             @ApiResponse(responseCode = "403", ref = "forbidden_delete"),
             @ApiResponse(responseCode = "200", ref = "ok_user"),
         }

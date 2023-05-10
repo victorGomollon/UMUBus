@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.TestPropertySource;
+//import org.testcontainers.junit.jupiter.Testcontainers;
 
 import es.um.atica.umubus.domain.events.EventBus;
+import es.um.atica.umuexample.SpringConfigurationTest;
 import es.um.atica.umuexample.users.application.command.ActualizarUsuarioCommand;
 import es.um.atica.umuexample.users.application.command.ActualizarUsuarioCommandHandler;
 import es.um.atica.umuexample.users.domain.repository.UsuarioWriteRepository;
@@ -22,14 +24,15 @@ import es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent;
 
 @SpringBootTest
 @TestPropertySource("classpath:test.properties")
-public class UpdateCommandHandlerTests {
+//@Testcontainers
+class UpdateCommandHandlerTests extends SpringConfigurationTest{
     
-    private static final String ID_USER = "30497182-c376-11ed-afa1-0242ac120002";
-    private static final String ID_USER_NAME = "Pepe Lopez";
-    private static final String ID_NOT_EXISTING_USER = "30497182-c376-11ed-afa1-0242ac120555";
+    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac120002";
+    private static final String NOMBRE_USUARIO = "Pepe Lopez";
+    private static final String ID_USUARIO_INEXISTENTE = "30497182-c376-11ed-afa1-0242ac120555";
 
     @Autowired
-    ActualizarUsuarioCommandHandler updateUserCommandHandler;
+    ActualizarUsuarioCommandHandler actualizarUsuarioCommandHandler;
 
     @SpyBean
     UsuarioWriteRepository usersWriteRepository;
@@ -38,29 +41,47 @@ public class UpdateCommandHandlerTests {
     private EventBus eventBus;
 
     @Test
-    public void actualizar_usuario_datos_correctos() throws Exception {
+    void actualizar_nombre_usuario_ok() throws Exception {
         // Dado un comando update con id y nombre correcto
-        ActualizarUsuarioCommand upd = ActualizarUsuarioCommand.of(ID_USER,Optional.of(ID_USER_NAME),Optional.empty());
+        ActualizarUsuarioCommand upd = ActualizarUsuarioCommand.of(ID_USUARIO,Optional.of(NOMBRE_USUARIO),Optional.empty());
         // Cuando se lanza el comando
-        updateUserCommandHandler.handle(upd);
+        actualizarUsuarioCommandHandler.handle(upd);
         // Entonces se actualiza el usuario
         ArgumentCaptor<Usuario> user = ArgumentCaptor.forClass(Usuario.class);
         Mockito.verify(usersWriteRepository).saveUser(user.capture());
         // Y tiene el id y name esperado
-        assertEquals(ID_USER, user.getValue().getId());
-        assertEquals(ID_USER_NAME, user.getValue().getName());
+        assertEquals(ID_USUARIO, user.getValue().getId());
+        assertEquals(NOMBRE_USUARIO, user.getValue().getName());
         // Y se lanza el evento
         ArgumentCaptor<ActualizarUsuarioEvent> event = ArgumentCaptor.forClass(ActualizarUsuarioEvent.class);
         Mockito.verify(eventBus).publish(event.capture());
-        assertEquals(ID_USER, event.getValue().getMetaData().get("userId"));
+        assertEquals(ID_USUARIO, event.getValue().getMetaData().get("userId"));
+    }
+    
+    @Test
+    void actualizar_edad_usuario_ok() throws Exception {
+        // Dado un comando update con id y nombre correcto
+        ActualizarUsuarioCommand upd = ActualizarUsuarioCommand.of(ID_USUARIO,Optional.empty(),Optional.of(35));
+        // Cuando se lanza el comando
+        actualizarUsuarioCommandHandler.handle(upd);
+        // Entonces se actualiza el usuario
+        ArgumentCaptor<Usuario> user = ArgumentCaptor.forClass(Usuario.class);
+        Mockito.verify(usersWriteRepository).saveUser(user.capture());
+        // Y tiene el id y edad esperado
+        assertEquals(ID_USUARIO, user.getValue().getId());
+        assertEquals(35, user.getValue().getAge());
+        // Y se lanza el evento
+        ArgumentCaptor<ActualizarUsuarioEvent> event = ArgumentCaptor.forClass(ActualizarUsuarioEvent.class);
+        Mockito.verify(eventBus).publish(event.capture());
+        assertEquals(ID_USUARIO, event.getValue().getMetaData().get("userId"));
     }
 
     @Test
-    public void actualizar_usuario_inexistente() throws Exception {
+    void actualizar_usuario_inexistente() throws Exception {
         // Dado un comando update con id inexistente y nombre correcto
-        ActualizarUsuarioCommand upd = ActualizarUsuarioCommand.of(ID_NOT_EXISTING_USER,Optional.of(ID_USER_NAME),Optional.empty());
+        ActualizarUsuarioCommand upd = ActualizarUsuarioCommand.of(ID_USUARIO_INEXISTENTE,Optional.of(NOMBRE_USUARIO),Optional.empty());
         // Cuando se lanza el comando
-        updateUserCommandHandler.handle(upd);
+        actualizarUsuarioCommandHandler.handle(upd);
         // Entonces no se actualiza el usuario
         ArgumentCaptor<Usuario> user = ArgumentCaptor.forClass(Usuario.class);
         Mockito.verify(usersWriteRepository,never()).saveUser(user.capture());

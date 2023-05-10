@@ -14,13 +14,13 @@ import org.springframework.web.filter.ForwardedHeaderFilter;
 import es.um.atica.umubus.adapters.events.RabbitEventBus;
 import es.um.atica.umubus.domain.events.Event;
 import es.um.atica.umubus.domain.events.EventBus;
-import es.um.atica.umuexample.users.adapters.events.UsuarioAllConsumer;
+import es.um.atica.umuexample.users.adapters.events.ActualizarUsuarioConsumer;
 import es.um.atica.umuexample.users.adapters.events.CrearUsuarioConsumer;
 import es.um.atica.umuexample.users.adapters.events.CrearUsuarioConsumerOther;
 import es.um.atica.umuexample.users.adapters.events.EliminarUsuarioConsumer;
+import es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent;
 import es.um.atica.umuexample.users.domain.event.CrearUsuarioEvent;
 import es.um.atica.umuexample.users.domain.event.EliminarUsuarioEvent;
-import es.um.atica.umuexample.users.domain.event.UsuarioEvent;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"es.um.atica.umuexample","es.um.atica.umubus"})
@@ -46,7 +46,7 @@ public class UmuBusPruebasApplication {
 	private CrearUsuarioConsumerOther crearUsuarioConsumerOther;
 
 	@Autowired
-	private UsuarioAllConsumer usuarioAllConsumer;
+	private ActualizarUsuarioConsumer actualizarUsuarioConsumer;
 
 	@Autowired
 	private EliminarUsuarioConsumer eliminarUsuarioConsumer;
@@ -67,10 +67,10 @@ public class UmuBusPruebasApplication {
 	}
 
 	@Bean
-	public Consumer<Message<UsuarioEvent>> allConsumer() {
-		return usuarioAllConsumer;
+	public Consumer<Message<ActualizarUsuarioEvent>> actualizarConsumer() {
+		return actualizarUsuarioConsumer;
 	}
-
+	
 	@Bean
 	public Consumer<Message<EliminarUsuarioEvent>> eliminarConsumer() {
 		return eliminarUsuarioConsumer;

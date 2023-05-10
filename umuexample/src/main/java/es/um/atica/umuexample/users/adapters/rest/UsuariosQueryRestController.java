@@ -20,18 +20,17 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Users Endpoints")
+@Tag(name = "Usuarios Endpoints")
 @RestController
-@RequestMapping(value="/pruebas/v1")
+@RequestMapping(value="/umuexample")
 public class UsuariosQueryRestController {
     
     @Autowired
     private QueryBus queryBus;
 
     @Operation(
-        description = "Get all user list paginated",
+        description = "Obtener todos los usuarios",
         responses = {
-            @ApiResponse(responseCode = "401", ref = "unauthorized"),
             @ApiResponse(responseCode = "403", ref = "forbidden_get"),
             @ApiResponse(responseCode = "200", ref = "ok_users"),
         }
@@ -43,9 +42,8 @@ public class UsuariosQueryRestController {
     }
 
     @Operation(
-        description = "Get user detail",
+        description = "Obtener usuario",
         responses = {
-            @ApiResponse(responseCode = "401", ref = "unauthorized"),
             @ApiResponse(responseCode = "403", ref = "forbidden_get"),
             @ApiResponse(responseCode = "404", ref = "notfound"),
             @ApiResponse(responseCode = "200", ref = "ok_user"),

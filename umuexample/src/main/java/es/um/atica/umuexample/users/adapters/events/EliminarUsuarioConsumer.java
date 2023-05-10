@@ -14,12 +14,12 @@ public class EliminarUsuarioConsumer implements Consumer<Message<EliminarUsuario
     @Override
     public void accept(Message<EliminarUsuarioEvent> message) {
     	EliminarUsuarioEvent eUE = message.getPayload();
-        System.err.println(">>>EVENTO USER DELETED: " + eUE);
+        System.err.println(">>>EVENTO USER DELETED Consumer: " + eUE);
     }
 	
 	@EventListener
 	public void accept(EliminarUsuarioEvent event) {
-		System.err.println(">>>EVENTO USER DELETED: " + event);
+		System.err.println(">>>EVENTO USER DELETED eventListener: " + event);
     }
 	
 }

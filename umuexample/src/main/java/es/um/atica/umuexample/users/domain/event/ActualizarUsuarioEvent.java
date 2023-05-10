@@ -24,5 +24,10 @@ public class ActualizarUsuarioEvent extends Event {
     public String getUserId() { return userId; }
 
     public String getChangelog() { return changelog; }
+    
+    @Override
+    public String toString() { 
+        return super.toString() + String.format("[userId:%s][chlog:%s]",userId,changelog);
+    }
 
 }

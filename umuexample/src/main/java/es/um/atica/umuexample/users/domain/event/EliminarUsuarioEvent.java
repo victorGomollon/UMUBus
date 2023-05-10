@@ -21,5 +21,10 @@ public class EliminarUsuarioEvent extends Event {
     }
 
     public String getUserId() { return userId; }
+    
+    @Override
+    public String toString() { 
+        return super.toString() + String.format("[userId:%s]",userId);
+    }
 
 }

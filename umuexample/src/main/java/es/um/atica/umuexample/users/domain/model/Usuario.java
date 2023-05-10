@@ -44,10 +44,6 @@ public class Usuario implements AggregateRoot {
         this.addEvent(EliminarUsuarioEvent.of(this));
     }
 
-    public boolean nameStartsWith(String startsWith) {
-        return this.name.startsWith(startsWith);
-    }
-
     @Override
     public EventCollection getEvents() { return events; }
 

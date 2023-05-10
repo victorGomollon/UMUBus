@@ -22,7 +22,6 @@ public class UsuariosErrorController {
                     .exception(ex.getClass().getName())
                     .path(req.getRequestURI())
                     .method(req.getMethod())
-                    .principal(req.getUserPrincipal().getName())
                     .build());
     }
 
