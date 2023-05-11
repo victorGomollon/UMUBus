@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-import org.springframework.test.context.TestPropertySource;
 //import org.testcontainers.junit.jupiter.Testcontainers;
 
 import es.um.atica.umubus.domain.events.EventBus;
@@ -23,13 +22,13 @@ import es.um.atica.umuexample.users.domain.model.Usuario;
 import es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent;
 
 @SpringBootTest
-@TestPropertySource("classpath:test.properties")
+//@TestPropertySource("classpath:test.properties")
 //@Testcontainers
-class UpdateCommandHandlerTests extends SpringConfigurationTest{
+class UpdateCommandHandlerLocalTests extends SpringConfigurationTest{
     
     private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac120002";
     private static final String NOMBRE_USUARIO = "Pepe Lopez";
-    private static final String ID_USUARIO_INEXISTENTE = "30497182-c376-11ed-afa1-0242ac120555";
+    private static final String ID_USUARIO_INEXISTENTE = "30797182-c376-11ed-afa1-0242ac120555";
 
     @Autowired
     ActualizarUsuarioCommandHandler actualizarUsuarioCommandHandler;

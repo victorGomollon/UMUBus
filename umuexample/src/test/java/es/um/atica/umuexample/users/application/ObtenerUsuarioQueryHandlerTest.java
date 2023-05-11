@@ -18,8 +18,8 @@ import es.um.atica.umuexample.users.domain.model.Usuario;
 @TestPropertySource("classpath:test.properties")
 class ObtenerUsuarioQueryHandlerTest {
     
-    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac220002";
-    private static final String ID_USUARIO_INEXISTENTE = "30497182-c376-11ed-afa1-0242ac120555";
+    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac120002";
+    private static final String ID_USUARIO_INEXISTENTE = "30497182-c376-12ed-afa1-0242ac120555";
     
     @Autowired
     private ObtenerUsuarioQueryHandler ObtenerUsuarioQueryHandler;

@@ -28,14 +28,15 @@ import es.um.atica.umuexample.users.domain.model.Usuario;
 import es.um.atica.umuexample.users.domain.event.EliminarUsuarioEvent;
 
 @SpringBootTest
-@TestPropertySource("classpath:test.properties")
+//@TestPropertySource("classpath:test.properties")
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 //@Testcontainers
-class DeleteCommandHandlerTests extends SpringConfigurationTest{
+@TestPropertySource(properties = {"umubus.rabbit.active=true"})
+class DeleteCommandHandlerRemoteTests extends SpringConfigurationTest{
 //class DeleteCommandHandlerTests {	
     
-    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac220002";
-    private static final String ID_USUARIO_INEXISTENTE = "30497182-c376-11ed-afa1-0242ac120555";
+    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac320002";
+    private static final String ID_USUARIO_INEXISTENTE = "30497082-c376-11ed-afa1-0242ac120555";
 
 //    private static final int RABBITMQ_DEFAULT_PORT = 5672;
 //    private static final int RABBITMQ_DEFAULT_HTTP_PORT = 15672;
