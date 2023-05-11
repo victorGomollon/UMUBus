@@ -46,17 +46,6 @@ class UsuariosCommandRestControllerTest extends SpringConfigurationTest {
     @Test
     void crea_usuario_existente() throws Exception {
     	UsuarioDTO usr = UsuarioDTO.builder().id(ID_USUARIO1).name("USUARIO11").age(11).build();
-//      assertThrows(NestedServletException.class, () ->{ 
-//    	  mvc.perform(
-//    	            MockMvcRequestBuilders
-//    	            .post(UMUEXAMPLE_PATH + ID_USUARIO1)
-//    	            .contentType(MediaType.APPLICATION_JSON_VALUE)
-//    	            .content(objectMapper.writeValueAsString(usr))
-//    	            .accept(MediaType.APPLICATION_JSON_VALUE))
-//    	        .andReturn();
-//      });
-    	
-//    	TODO: ESTO SERIA LO CORRECTO, PORQUE NO VA?
         MvcResult mvcResult = mvc.perform(
             MockMvcRequestBuilders
             .post(UMUEXAMPLE_PATH + ID_USUARIO1)
@@ -102,16 +91,6 @@ class UsuariosCommandRestControllerTest extends SpringConfigurationTest {
     @Test
     void actualizar_usuario_existente() throws Exception {
     	UsuarioDTO usr = UsuarioDTO.builder().id(ID_USUARIO_INEXISTENTE_UPD).name("USUARIO11").age(11).build();
-//      assertThrows(NestedServletException.class, () ->{ 
-//    	  MvcResult mvcResult = mvc.perform(
-//    	            MockMvcRequestBuilders
-//    	            .put(UMUEXAMPLE_PATH + ID_USUARIO_INEXISTENTE_UPD)
-//    	            .contentType(MediaType.APPLICATION_JSON_VALUE)
-//    	            .content(objectMapper.writeValueAsString(usr))
-//    	            .accept(MediaType.APPLICATION_JSON_VALUE))
-//    	        .andReturn();
-//      });
-    	
         MvcResult mvcResult = mvc.perform(
             MockMvcRequestBuilders
             .put(UMUEXAMPLE_PATH + ID_USUARIO_INEXISTENTE_UPD)
@@ -139,16 +118,6 @@ class UsuariosCommandRestControllerTest extends SpringConfigurationTest {
        
        @Test
        void eliminar_usuario_inexistente() throws Exception {
-//         assertThrows(NestedServletException.class, () ->{ 
-//       	  MvcResult mvcResult = mvc.perform(
-//       	            MockMvcRequestBuilders
-//       	            .put(UMUEXAMPLE_PATH + ID_USUARIO_INEXISTENTE_UPD)
-//       	            .contentType(MediaType.APPLICATION_JSON_VALUE)
-//       	            .content(objectMapper.writeValueAsString(usr))
-//       	            .accept(MediaType.APPLICATION_JSON_VALUE))
-//       	        .andReturn();
-//         });
-       	
            MvcResult mvcResult = mvc.perform(
                MockMvcRequestBuilders
                .delete(UMUEXAMPLE_PATH + ID_USUARIO_INEXISTENTE_UPD)

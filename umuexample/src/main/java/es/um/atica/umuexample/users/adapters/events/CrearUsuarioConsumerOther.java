@@ -14,11 +14,11 @@ public class CrearUsuarioConsumerOther implements Consumer<Message<CrearUsuarioE
     @Override
     public void accept(Message<CrearUsuarioEvent> message) {
     	CrearUsuarioEvent cUE = message.getPayload();
-        System.err.println(">>>EVENTO USER CREATED OTHER: " + cUE);
+        System.err.println(">>>EVENTO USER CREATED OTHER Consumer: " + cUE);
     }
 	
 	@EventListener
 	public void accept(CrearUsuarioEvent event) {
-		System.err.println(">>>EVENTO USER CREATED OTHER: " + event);
+		System.err.println(">>>EVENTO USER CREATED OTHER eventListener: " + event);
     }
 }

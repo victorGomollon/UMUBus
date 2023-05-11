@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.TestPropertySource;
-//import org.testcontainers.junit.jupiter.Testcontainers;
 
 import es.um.atica.umubus.domain.events.EventBus;
 import es.um.atica.umuexample.SpringConfigurationTest;
@@ -23,8 +22,6 @@ import es.um.atica.umuexample.users.domain.model.Usuario;
 import es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent;
 
 @SpringBootTest
-//@TestPropertySource("classpath:test.properties")
-//@Testcontainers
 @TestPropertySource(properties = {"umubus.rabbit.active=true"})
 class UpdateCommandHandlerRemoteTests extends SpringConfigurationTest{
     

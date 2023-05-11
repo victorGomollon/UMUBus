@@ -14,12 +14,12 @@ public class ActualizarUsuarioConsumer implements Consumer<Message<ActualizarUsu
     @Override
     public void accept(Message<ActualizarUsuarioEvent> message) {
     	ActualizarUsuarioEvent uE = message.getPayload();
-        System.err.println(">>>EVENTO USER ????: " + uE);
+        System.err.println(">>>EVENTO USER UPDATE Consumer: " + uE);
     }
 	
 	@EventListener
 	public void accept(ActualizarUsuarioEvent event) {
-		System.err.println(">>>EVENTO USER ????: " + event);
+		System.err.println(">>>EVENTO USER UPDATE eventListener: " + event);
     }
 
 }
