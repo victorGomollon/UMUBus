@@ -17,7 +17,7 @@ import es.um.atica.umubus.domain.events.EventBus;
 @Primary
 public class RabbitEventBus extends RabbitProcessorEvent<Message<Event>> implements EventBus  {
 
-	//Incluye la implementación del bus loca (SpringEventBus.java) para la gestión de eventos en local si fuese necesario
+	//Incluye la implementación del bus local (SpringEventBus.java) para la gestión de eventos en local si fuese necesario
 	@Autowired
     private ApplicationEventPublisher applicationEventPublisher;
 	

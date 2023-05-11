@@ -91,7 +91,37 @@
 			<scope>test</scope>
 		</dependency>
             <!-- Fin testContainer-->
+            <!-- ChaosMonkey -->
+        <dependency>
+		    <groupId>de.codecentric</groupId>
+		    <artifactId>chaos-monkey-spring-boot</artifactId>
+		    <version>2.1.1</version>
+		</dependency>
+		<!-- Fin ChaosMonkey -->
  </dependencies>
+ <profiles>
+	 <profile>
+        <id>local</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <spring.profiles.active>local</spring.profiles.active>
+        </properties>
+    </profile>
+    <profile>
+        <id>remoto</id>
+        <properties>
+            <spring.profiles.active>remoto</spring.profiles.active>
+        </properties>
+    </profile>
+    <profile>
+        <id>chaosMonkey</id>
+        <properties>
+            <spring.profiles.active>chaosMonkey</spring.profiles.active>
+        </properties>
+    </profile>
+ </profiles>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -110,6 +140,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<profiles>
+                		<profile>local</profile>
+                		<profile>remoto</profile>
+                		<profile>chaosMonkey</profile>
+            		</profiles>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
