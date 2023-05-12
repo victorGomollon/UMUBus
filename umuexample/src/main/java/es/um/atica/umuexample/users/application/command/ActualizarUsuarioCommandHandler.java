@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import es.um.atica.umuexample.users.domain.repository.UsuarioReadRepository;
 import es.um.atica.umuexample.users.domain.repository.UsuarioWriteRepository;
 import es.um.atica.umubus.domain.cqrs.CommandHandler;
-import es.um.atica.umubus.domain.events.EventBus;
+import es.um.atica.umubus.domain.events.IEventBusFactory;
 
 @Component
 public class ActualizarUsuarioCommandHandler implements CommandHandler<ActualizarUsuarioCommand>{
@@ -18,7 +18,7 @@ public class ActualizarUsuarioCommandHandler implements CommandHandler<Actualiza
     private UsuarioWriteRepository usersWriteRepository;
 
     @Autowired
-    private EventBus eventBus;
+    private IEventBusFactory eventBusFactory;
 
     @Override
     public void handle(ActualizarUsuarioCommand command) {
@@ -27,7 +27,7 @@ public class ActualizarUsuarioCommandHandler implements CommandHandler<Actualiza
             if (command.getName().isPresent()) u.updateUserName(command.getName().get());
             if (command.getAge().isPresent()) u.updateUserAge(command.getAge().get());
             usersWriteRepository.saveUser(u);
-            eventBus.publish(u);
+            eventBusFactory.getEventBus().publish(u);
         });
     }
     

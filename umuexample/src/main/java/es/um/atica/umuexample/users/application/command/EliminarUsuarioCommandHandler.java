@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import es.um.atica.umuexample.users.domain.repository.UsuarioReadRepository;
 import es.um.atica.umuexample.users.domain.repository.UsuarioWriteRepository;
 import es.um.atica.umubus.domain.cqrs.CommandHandler;
-import es.um.atica.umubus.domain.events.EventBus;
+import es.um.atica.umubus.domain.events.IEventBusFactory;
 
 @Component
 public class EliminarUsuarioCommandHandler implements CommandHandler<EliminarUsuarioCommand>{
@@ -18,7 +18,7 @@ public class EliminarUsuarioCommandHandler implements CommandHandler<EliminarUsu
     private UsuarioWriteRepository usersWriteRepository;
 
     @Autowired
-    private EventBus eventBus;
+    private IEventBusFactory eventBusFactory;
 
     @Override
     public void handle(EliminarUsuarioCommand command) {
@@ -26,7 +26,7 @@ public class EliminarUsuarioCommandHandler implements CommandHandler<EliminarUsu
         usersReadRepository.findUser(command.getId()).ifPresent((u)->{
             u.deleteUser();
             usersWriteRepository.deleteUser(u);
-            eventBus.publish(u);
+            eventBusFactory.getEventBus().publish(u);
         });
     }
     

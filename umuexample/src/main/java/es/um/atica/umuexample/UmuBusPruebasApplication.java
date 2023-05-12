@@ -8,12 +8,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Profile;
 import org.springframework.messaging.Message;
 import org.springframework.web.filter.ForwardedHeaderFilter;
 
 import es.um.atica.umubus.adapters.events.RabbitEventBus;
 import es.um.atica.umubus.domain.events.Event;
 import es.um.atica.umubus.domain.events.EventBus;
+import es.um.atica.umubus.domain.events.IEventBusFactory;
 import es.um.atica.umuexample.users.adapters.events.ActualizarUsuarioConsumer;
 import es.um.atica.umuexample.users.adapters.events.CrearUsuarioConsumer;
 import es.um.atica.umuexample.users.adapters.events.CrearUsuarioConsumerOther;
@@ -37,7 +39,7 @@ public class UmuBusPruebasApplication {
 	
 	//No quiero tener que depender de declarar los beans al arrancar...meterlo en un fichero de configuración (Por lo menos el supplier)
 	@Autowired
-	private RabbitEventBus eventBus;
+	private IEventBusFactory eventBusFactory;
 
 	@Autowired
 	private CrearUsuarioConsumer crearUsuarioConsumer;
@@ -51,34 +53,40 @@ public class UmuBusPruebasApplication {
 	@Autowired
 	private EliminarUsuarioConsumer eliminarUsuarioConsumer;
 	
+	@Profile("remoto")
 	@Bean
 	public Supplier<Message<Event>> eventProcessor() {
-		return eventBus;
+		return (RabbitEventBus) eventBusFactory.getEventBus();
 	}
 
+	@Profile("remoto")
 	@Bean
 	public Consumer<Message<CrearUsuarioEvent>> crearConsumer() {
 		return crearUsuarioConsumer;
 	}
 
+	@Profile("remoto")
 	@Bean
 	public Consumer<Message<CrearUsuarioEvent>> crearConsumer2() {
 		return crearUsuarioConsumerOther;
 	}
 
+	@Profile("remoto")
 	@Bean
 	public Consumer<Message<ActualizarUsuarioEvent>> actualizarConsumer() {
 		return actualizarUsuarioConsumer;
 	}
 	
+	@Profile("remoto")
 	@Bean
 	public Consumer<Message<EliminarUsuarioEvent>> eliminarConsumer() {
 		return eliminarUsuarioConsumer;
 	}
 
+	@Profile("remoto")
 	@Bean
 	public EventBus eventTypeResolver() {
-		return eventBus;
+		return eventBusFactory.getEventBus();
 	}
 
 }

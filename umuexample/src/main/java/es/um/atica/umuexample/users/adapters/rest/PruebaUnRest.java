@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.um.atica.umubus.domain.events.EventBus;
+import es.um.atica.umubus.domain.events.IEventBusFactory;
 import es.um.atica.umuexample.users.adapters.rest.dto.UsuarioDTO;
 import es.um.atica.umuexample.users.domain.event.CrearUsuarioEvent;
 import es.um.atica.umuexample.users.domain.model.Usuario;
@@ -23,8 +23,9 @@ import org.springframework.http.ResponseEntity;
 @RestController
 @RequestMapping(value="/umuexample")
 public class PruebaUnRest {
-    @Autowired
-    private EventBus eventBus;
+    
+	@Autowired
+    private IEventBusFactory eventBusFactory;
     
     @Operation(
             description = "Probar evento crear usuario",
@@ -38,7 +39,7 @@ public class PruebaUnRest {
         public ResponseEntity<UsuarioDTO> createUser(@PathVariable(name="id",required = true) String userId,
             HttpServletRequest req) throws Exception {
 		Usuario user = Usuario.of(userId,"Pedro", 30);
-		eventBus.publish(CrearUsuarioEvent.of(user));
+		eventBusFactory.getEventBus().publish(CrearUsuarioEvent.of(user));
 		return new ResponseEntity<>(UsuarioDTO.builder().id(userId).build(), HttpStatus.OK);
         }
 }

@@ -8,7 +8,7 @@ import es.um.atica.umuexample.users.domain.model.Usuario;
 import es.um.atica.umuexample.users.domain.repository.UsuarioReadRepository;
 import es.um.atica.umuexample.users.domain.repository.UsuarioWriteRepository;
 import es.um.atica.umubus.domain.cqrs.SyncCommandHandler;
-import es.um.atica.umubus.domain.events.EventBus;
+import es.um.atica.umubus.domain.events.IEventBusFactory;
 
 @Component
 public class CrearUsuarioCommandHandler implements SyncCommandHandler<Void,CrearUsuarioCommand>{
@@ -21,7 +21,7 @@ public class CrearUsuarioCommandHandler implements SyncCommandHandler<Void,Crear
 
 
     @Autowired
-    private EventBus eventBus;
+    private IEventBusFactory eventBusFactory;
 
     @Override
     public Void handle(CrearUsuarioCommand command) {
@@ -37,7 +37,7 @@ public class CrearUsuarioCommandHandler implements SyncCommandHandler<Void,Crear
                             command.getAge());
                     usr.createUser();
                     usersWriteRepository.saveUser(usr);
-                    eventBus.publish(usr);
+                    eventBusFactory.getEventBus().publish(usr);
                 }
             );
         return null;        
