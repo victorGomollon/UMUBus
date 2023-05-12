@@ -1,6 +1,5 @@
-#spring.datasource.url=jdbc:h2:file:/data/h2;INIT=CREATE SCHEMA IF NOT EXISTS PRUEBAS\\; SET SCHEMA PRUEBAS\\;
-#Para git y va en memoria (Descomentar a la hora de subir a git).
-spring.datasource.url=jdbc:h2:mem:testdb;INIT=CREATE SCHEMA IF NOT EXISTS PRUEBAS\\; SET SCHEMA PRUEBAS\\;
+
+spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=password
@@ -9,10 +8,22 @@ spring.jpa.hibernate.ddl-auto=validate
 
 spring.jpa.show-sql=true
 spring.sql.init.mode=always
-spring.sql.init.schema-locations: classpath:schema-test.sql
-spring.sql.init.data-locations=classpath:data-test.sql
+spring.sql.init.data-locations=classpath:data.sql
+spring.sql.init.schema-locations: classpath:schema.sql
 
-#Config rabbit:
+#---
+#spring.profiles.active=@spring.profiles.active@				NO FUNCIONA!!!!
+
+#Configuracion local por defecto
+umubus.rabbit.active=false
+#---
+#spring.config.activate.on-profile=local				NO FUNCIONA!!!!
+
+#Configuracion para remoto
+#---
+#spring.config.activate.on-profile=remoto				NO FUNCIONA!!!!
+
+umubus.rabbit.active=true
 
 spring.cloud.function.definition=eventProcessor;crearConsumer;crearConsumer2;actualizarConsumer;eliminarConsumer
 
@@ -37,7 +48,6 @@ spring.cloud.stream.rabbit.bindings.crearConsumer2-in-0.consumer.bindingRoutingK
 spring.cloud.stream.rabbit.bindings.eliminarConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.users.domain.event.EliminarUsuarioEvent
 spring.cloud.stream.rabbit.bindings.actualizarConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent
 
-
 #enabled binder retries
 spring.cloud.stream.bindings.crearConsumer-in-0.consumer.max-attempts=3
 spring.cloud.stream.bindings.crearConsumer2-in-0.consumer.max-attempts=3
@@ -59,4 +69,39 @@ spring.cloud.stream.rabbit.bindings.actualizarConsumer-in-0.consumer.republish-t
 
 #spring.cloud.stream.rabbit.bindings.crearConsumer-in-0.consumer.dlq-binding-arguments.
 
-umubus.rabbit.active=false
+#Configuracion chaosMonkey:
+#---
+#spring.config.activate.on-profile=chaosMonkey				NO FUNCIONA!!!!
+
+
+#Para activarlo desde properties
+#chaos.monkey.enabled=true
+
+#Activar el administrador desde la web, a traves de endpoints:
+#management.endpoint.chaosmonkey.enabled=true
+#management.endpoint.chaosmonkeyjmx.enabled=true
+# include all endpoints
+#management.endpoints.web.exposure.include=*
+#management.server.port=8888
+
+#Properties para activas durante el arranque:
+#Vigilantes a activar
+#chaos.monkey.watcher.controller=false
+#chaos.monkey.watcher.restController=false
+#chaos.monkey.watcher.service=true
+#chaos.monkey.watcher.repository=false
+#chaos.monkey.watcher.component=false
+#Limita los paquetes, clases, etc... a vigilar (Si queremos especificar)
+#chaos.monkey.assaults.watchedCustomServices=/umubus/src/main/java/es/um/atica/umubus/adapters/events/RabbitEventBus.java
+
+#Magia de cositas para empezar el caos
+#chaos.monkey.assaults.latencyActive=true
+#chaos.monkey.assaults.latencyRangeStart=3000
+#chaos.monkey.assaults.latencyRangeEnd=15000
+#chaos.monkey.assaults.exceptions-active=true
+#chaos.monkey.assaults.kill-application-active=true
+
+#Configuracion de frecuencia y tipos
+#chaos.monkey.assaults.level=5
+#chaos.monkey.assaults.exception.type=java.lang.RuntimeException
+#---
