@@ -14,5 +14,8 @@
 	<modules>
 		<module>umubus</module>
 		<module>umuexample</module>
+		<module>umuexampleGeneric</module>
+		<module>umuexampleLocal</module>
+		<module>umuexampleRemoto</module>
 	</modules>
 </project>

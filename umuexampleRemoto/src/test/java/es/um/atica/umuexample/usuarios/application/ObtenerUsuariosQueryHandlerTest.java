@@ -1,0 +1,29 @@
+package es.um.atica.umuexample.usuarios.application;
+
+import static org.junit.Assert.assertFalse;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+import es.um.atica.umuexample.usuarios.application.query.ObtenerUsuariosQueryHandler;
+import es.um.atica.umuexample.usuarios.domain.model.Usuario;
+import es.um.atica.umuexample.usuarios.application.query.ObtenerUsuariosQuery;
+
+@SpringBootTest
+@TestPropertySource("classpath:test.properties")
+class ObtenerUsuariosQueryHandlerTest {
+    
+    @Autowired
+    private ObtenerUsuariosQueryHandler ObtenerUsuariosQueryHandler;
+
+    @Test
+    void obtener_todos_usuarios() throws Exception {
+    	ObtenerUsuariosQuery query = ObtenerUsuariosQuery.of();
+        List<Usuario> result = ObtenerUsuariosQueryHandler.handle(query);
+        assertFalse(result.isEmpty());
+    }
+}
