@@ -32,7 +32,7 @@
 		</dependency>
 		<dependency>
  			<groupId>es.um.atica</groupId>
- 			<artifactId>umubus</artifactId>
+ 			<artifactId>umubusRabbit</artifactId>
  			<version>0.0.1-SNAPSHOT</version>
  		</dependency>
 		<dependency>

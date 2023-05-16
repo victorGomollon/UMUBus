@@ -15,15 +15,12 @@ spring.sql.init.schema-locations: classpath:schema.sql
 #spring.profiles.active=@spring.profiles.active@				NO FUNCIONA!!!!
 
 #Configuracion local por defecto
-umubus.rabbit.active=false
 #---
 #spring.config.activate.on-profile=local				NO FUNCIONA!!!!
 
 #Configuracion para remoto
 #---
 #spring.config.activate.on-profile=remoto				NO FUNCIONA!!!!
-
-umubus.rabbit.active=true
 
 spring.cloud.function.definition=eventProcessor;crearConsumer;crearConsumer2;actualizarConsumer;eliminarConsumer
 

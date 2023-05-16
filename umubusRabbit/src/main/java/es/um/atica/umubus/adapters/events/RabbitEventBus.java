@@ -21,14 +21,11 @@ public class RabbitEventBus extends RabbitProcessorEvent<Message<Event>> impleme
 	@Autowired
     private ApplicationEventPublisher applicationEventPublisher;
 	
-	@Value("${umubus.rabbit.active}")
-	private boolean isRabbitActive;
-	
     @Override
     public void publish(Event event) {
     	event.setMetaData();
     	// Store into queue
-        if(isRabbitActive) {
+        if(!event.isLocal()) {
         	addEvent(event);
         }else {
 //        	Message<Event> messageEvent =  CloudEventMessageBuilder.withData(event)

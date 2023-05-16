@@ -17,6 +17,7 @@ public class SpringEventBus implements EventBus {
     
     @Override
     public void publish(Event event) {
+    	event.setMetaData();
         applicationEventPublisher.publishEvent(event); 
     }
 }

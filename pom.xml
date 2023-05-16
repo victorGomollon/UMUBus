@@ -13,6 +13,7 @@
 	
 	<modules>
 		<module>umubus</module>
+		<module>umubusRabbit</module>
 		<module>umuexample</module>
 		<module>umuexampleGeneric</module>
 		<module>umuexampleLocal</module>

@@ -8,7 +8,8 @@ public class Event {
 
     private String type;
     private int version;
-    private Map<String, String> metaData;
+    private boolean isLocal;
+	private Map<String, String> metaData;
 
     public Event() {
     	this(1);
@@ -17,6 +18,7 @@ public class Event {
     public Event(int version) {
         this.version = version;
         this.type = String.format(this.getTypeFormat(),this.getClass().getName());
+        this.isLocal = false;
     }
 
     public String getType() { return this.type; }
@@ -32,6 +34,14 @@ public class Event {
     public Map getMetaData() {
     	return metaData;
     }
+    
+    public boolean isLocal() {
+		return isLocal;
+	}
+
+	public void setLocal(boolean isLocal) {
+		this.isLocal = isLocal;
+	}
     
   public void setMetaData(){
 	  metaData = new HashMap<>();

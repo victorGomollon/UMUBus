@@ -21,7 +21,6 @@ import es.um.atica.umuexample.matriculas.domain.model.Matricula;
 import es.um.atica.umuexample.matriculas.domain.event.CrearMatriculaEvent;
 
 @SpringBootTest
-@TestPropertySource(properties = {"umubus.rabbit.active=true"})
 class CreateCommandHandlerRemoteTests extends SpringConfigurationTest{
     
     private static final String ID_MATRICULA = "10497182-c376-11ed-afa1-0242ac220002";

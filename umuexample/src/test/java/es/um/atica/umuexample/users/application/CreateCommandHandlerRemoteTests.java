@@ -10,7 +10,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-import org.springframework.test.context.TestPropertySource;
 
 import es.um.atica.umubus.domain.events.EventBus;
 import es.um.atica.umuexample.SpringConfigurationTest;
@@ -21,7 +20,6 @@ import es.um.atica.umuexample.users.domain.model.Usuario;
 import es.um.atica.umuexample.users.domain.event.CrearUsuarioEvent;
 
 @SpringBootTest
-@TestPropertySource(properties = {"umubus.rabbit.active=true"})
 class CreateCommandHandlerRemoteTests extends SpringConfigurationTest{
     
     private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac220002";
