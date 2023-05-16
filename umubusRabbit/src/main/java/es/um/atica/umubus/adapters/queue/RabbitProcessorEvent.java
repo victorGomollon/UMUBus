@@ -2,10 +2,8 @@ package es.um.atica.umubus.adapters.queue;
 
 import java.net.URI;
 import java.time.Instant;
-//import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
-//import java.time.ZoneOffset;
 import java.util.Queue;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -13,6 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import es.um.atica.umubus.domain.events.Event;
 import es.um.atica.umubus.domain.queue.ProcessorEvent;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.function.cloudevent.CloudEventMessageBuilder;
 import org.springframework.messaging.Message;
 
@@ -20,6 +19,12 @@ public class RabbitProcessorEvent<T extends Message<Event>> implements Processor
 
     private Queue<Message<Event>> queue = new ConcurrentLinkedQueue<>();
 
+    @Value("${spring.rabbitmq.host}")
+    private String rabbitHost;
+    
+    @Value("${spring.rabbitmq.port}")
+    private String rabbitPort;
+    
     @Override
     public Message<Event> get() {
         // Send to message broker
@@ -31,10 +36,8 @@ public class RabbitProcessorEvent<T extends Message<Event>> implements Processor
     	Message<Event> messageEvent =  CloudEventMessageBuilder.withData(event)
     			.setSpecVersion("1.0")
     			.setId(UUID.randomUUID().toString())
-    			.setSource(URI.create("http://localhost"))
+    			.setSource(URI.create("http://" + rabbitHost + ":" + rabbitPort + "/"))
     			.setType(event.getType())
-//				.setTime(LocalDateTime.now().atOffset(ZoneOffset.of("+01:00")))
-//				.setTime(OffsetDateTime.now())
 				.setTime(OffsetDateTime.ofInstant(Instant.now(), ZoneId.systemDefault()))
     			.build();
         queue.add(messageEvent);    

@@ -26,7 +26,6 @@ public class CrearUsuarioConsumer implements Consumer<Message<Event>> {
         try {
 			syncCommandBus.handle(CrearMatriculaCommand.of(mat.getId(), mat.getName(), mat.getAsignatura(), mat.getUsuario()));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         System.err.println(">>>Se ha creado la matricula Consumer: " + mat);

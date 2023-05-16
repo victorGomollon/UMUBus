@@ -23,18 +23,3 @@ public class ActualizarUsuarioConsumer implements Consumer<Message<ActualizarUsu
     }
 
 }
-
-//public class UsuarioAllConsumer implements Consumer<Message<UsuarioEvent>> {
-//
-//    @Override
-//    public void accept(Message<UsuarioEvent> message) {
-//    	UsuarioEvent uE = message.getPayload();
-//        System.err.println(">>>EVENTO USER ????: " + uE);
-//    }
-//	
-//	@EventListener
-//	public void accept(UsuarioEvent event) {
-//		System.err.println(">>>EVENTO USER ????: " + event);
-//    }
-//
-//}

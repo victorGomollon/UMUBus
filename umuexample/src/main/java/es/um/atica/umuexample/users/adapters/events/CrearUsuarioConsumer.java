@@ -14,10 +14,7 @@ public class CrearUsuarioConsumer implements Consumer<Message<CrearUsuarioEvent>
 
 	@Override
     public void accept(Message<CrearUsuarioEvent> message) {
-//    	CrearUsuarioEvent cUE = message.getPayload();
     	Event event = message.getPayload();
-//        System.err.println(">>>EVENTO USER CREATED: " + cUE);
-//        System.err.println(">>>EVENTO USER CREATED USER_ID: " + cUE.getUserId());
         System.err.println(">>>EVENTO USER CREATED Consumer: " + event.getMetaData().get("userId"));
     }
 	

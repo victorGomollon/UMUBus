@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Primary;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
@@ -28,16 +27,6 @@ public class RabbitEventBus extends RabbitProcessorEvent<Message<Event>> impleme
         if(!event.isLocal()) {
         	addEvent(event);
         }else {
-//        	Message<Event> messageEvent =  CloudEventMessageBuilder.withData(event)
-//        			.setSpecVersion("1.0")
-//        			.setId(UUID.randomUUID().toString())
-//        			.setSource(URI.create("http://localhost"))
-//        			.setType(event.getType())
-////    				.setTime(LocalDateTime.now().atOffset(ZoneOffset.of("+01:00")))
-////    				.setTime(OffsetDateTime.now())
-//    				.setTime(OffsetDateTime.ofInstant(Instant.now(), ZoneId.systemDefault()))
-//        			.build();
-//        	applicationEventPublisher.publishEvent(messageEvent);
         	applicationEventPublisher.publishEvent(event);
         }
     }
