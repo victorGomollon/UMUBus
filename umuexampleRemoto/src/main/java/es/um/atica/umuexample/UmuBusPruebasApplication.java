@@ -81,7 +81,7 @@ public class UmuBusPruebasApplication {
 	}
 
 	@Bean
-	public Consumer<Message<Event>> crearMatriculaConsumer() {
+	public Consumer<Message<Event>> crearMatConsumer() {
 		return crearMatriculaConsumer;
 	}
 	
