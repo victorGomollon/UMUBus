@@ -16,7 +16,7 @@ import es.um.atica.umubus.domain.repository.MessageFallBackWriteRepository;
 public class DBMessageFallBackReadWriteRepository implements MessageFallBackReadRepository,MessageFallBackWriteRepository {
 
 	@Autowired
-    private JPAMessageFallBackReadRepository jpaMessageFallBackReadRepository;
+    private JpaMessageFallBackReadRepository jpaMessageFallBackReadRepository;
 
     @Override
     public void saveMessageFB(MessageFallBack messageFB) {

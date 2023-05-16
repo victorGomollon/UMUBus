@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.messaging.Message;
 import org.springframework.web.filter.ForwardedHeaderFilter;
 
@@ -22,8 +23,9 @@ import es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent;
 import es.um.atica.umuexample.users.domain.event.CrearUsuarioEvent;
 import es.um.atica.umuexample.users.domain.event.EliminarUsuarioEvent;
 
-@SpringBootApplication
-@ComponentScan(basePackages = {"es.um.atica.umuexample","es.um.atica.umubus"})
+@SpringBootApplication(scanBasePackages = {"es.um.atica.umuexample","es.um.atica.umubus"})
+//@ComponentScan(basePackages = {"es.um.atica.umuexample","es.um.atica.umubus"})
+@EnableJpaRepositories( basePackages = {"es.um.atica.umuexample","es.um.atica.umubus",} )
 public class UmuBusPruebasApplication {
 
 	@Bean

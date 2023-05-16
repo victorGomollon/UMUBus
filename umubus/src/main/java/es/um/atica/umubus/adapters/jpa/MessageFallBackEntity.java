@@ -1,8 +1,6 @@
 package es.um.atica.umubus.adapters.jpa;
 
 import java.sql.Timestamp;
-import java.time.OffsetDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

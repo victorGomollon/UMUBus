@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface JPAMessageFallBackReadRepository extends JpaRepository<MessageFallBackEntity,String>{
+public interface JpaMessageFallBackReadRepository extends JpaRepository<MessageFallBackEntity,String>{
     
 }
