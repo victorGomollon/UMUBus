@@ -22,7 +22,7 @@ import es.um.atica.umuexample.usuarios.domain.event.CrearUsuarioEvent;
 @SpringBootTest
 class CreateCommandHandlerLocalTests extends SpringConfigurationTest{
     
-    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac220002";
+    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac320202";
     private static final String ID_USUARIO_INEXISTENTE = "30497182-c376-11ed-afa1-0242ac120555";
 
     @Autowired

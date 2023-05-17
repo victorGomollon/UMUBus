@@ -1,7 +1,7 @@
 package es.um.atica.umubus.domain.events;
 
 import java.util.Collection;
-
+import java.sql.Timestamp;
 import es.um.atica.umubus.domain.ddd.AggregateRoot;
 import java.util.Map;
 
@@ -12,7 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public interface EventBus {
 
     void publish(Event e);
-
+    
+    void publishMessageFB(Event event, String idMessage, Timestamp sendDate);
+    
     default void publish(Collection<Event> events) {
         events.stream().forEach(this::publish);
     }
@@ -35,5 +37,5 @@ public interface EventBus {
         }
         return "unknown";
     }
-    
+
 }

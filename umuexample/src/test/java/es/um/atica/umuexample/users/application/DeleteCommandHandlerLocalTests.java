@@ -21,7 +21,7 @@ import es.um.atica.umuexample.users.domain.event.EliminarUsuarioEvent;
 @SpringBootTest
 class DeleteCommandHandlerLocalTests extends SpringConfigurationTest{
     
-    private static final String ID_USUARIO = "30497182-c376-11ed-afa1-0242ac220002";
+    private static final String ID_USUARIO = "30437182-c376-11ed-afa1-0242ac320002";
     private static final String ID_USUARIO_INEXISTENTE = "30497082-c376-11ed-afa1-0242ac120555";
 
     @Autowired
