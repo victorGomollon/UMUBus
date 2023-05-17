@@ -9,11 +9,12 @@ public class EliminarMatriculaEvent extends Event {
 
     public EliminarMatriculaEvent() {
     	super();
+    	this.setLocal(true);
     }
     
     private EliminarMatriculaEvent(String id) {
     	super();
-        this.matriculaId = id;
+        this.matriculaId = id; this.setLocal(true);
     }
 
     public static EliminarMatriculaEvent of (Matricula matricula) {

@@ -60,7 +60,5 @@ public class RabbitProcessorEvent<T extends Message<Event>> implements Processor
             messageFallBackWriteRepository.saveMessageFB(mFB);
             }
         );
-        System.err.println(">>>ENVIAMOS EL MENSAJE A BBDD Y A LA COLA: " + messageEvent.getHeaders().get("ce-id").toString());
     }
-
 }

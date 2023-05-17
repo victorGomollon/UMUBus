@@ -10,11 +10,12 @@ public class ActualizarUsuarioEvent extends Event {
 
     public ActualizarUsuarioEvent() {
     	super();
+    	this.setLocal(true);
     }
     
     private ActualizarUsuarioEvent(String id, String changelog) {
     	super();
-        this.userId = id; this.changelog = changelog;
+        this.userId = id; this.changelog = changelog; this.setLocal(true);
     }
 
     public static ActualizarUsuarioEvent of (Usuario user, String changelog) {

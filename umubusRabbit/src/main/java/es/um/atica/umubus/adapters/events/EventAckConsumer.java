@@ -18,7 +18,6 @@ public class EventAckConsumer implements Consumer<Message<Event>> {
 	
     @Override
     public void accept(Message<Event> message) {
-    	System.err.println(">>>HEMOS PROCESADO EL MENSAJE: " + message.getHeaders().get("ce-id").toString());
     	try {
     		messageFallBackWriteRepository.deleteMessageFBById(message.getHeaders().get("ce-id").toString());
     	}catch(EmptyResultDataAccessException e) {

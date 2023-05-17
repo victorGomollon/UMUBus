@@ -6,4 +6,6 @@ insert into pruebas_remoto.usuarios values ('30497182-c376-11ed-afa1-0242ac32000
 
 insert into pruebas_remoto.usuarios values ('30497182-c376-11ed-afa1-0242ac320202','This is a test 4',24);
 
+insert into pruebas_remoto.usuarios values ('30437182-c376-11ed-afa1-0242ac320002','Usuario a eliminar',21);
+
 commit;
