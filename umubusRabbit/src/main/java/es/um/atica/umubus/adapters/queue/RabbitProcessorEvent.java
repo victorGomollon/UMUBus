@@ -52,15 +52,15 @@ public class RabbitProcessorEvent<T extends Message<Event>> implements Processor
         // Store into queue
         queue.add(messageEvent);
         // Send to BBDD
-        messageFallBackReadRepository.findMessage(messageEvent.getHeaders().getId().toString())
+        messageFallBackReadRepository.findMessage(messageEvent.getHeaders().get("ce-id").toString())
         .ifPresentOrElse(
             (mFB)-> { throw new UnsupportedOperationException(String.format("Ya esta el mensaje %s en la tabla",mFB.getId())); },
             () -> {
-            MessageFallBack mFB = MessageFallBack.of(messageEvent.getHeaders().getId().toString(), new Timestamp(messageEvent.getHeaders().getTimestamp()), messageEvent.getPayload());
+            MessageFallBack mFB = MessageFallBack.of(messageEvent.getHeaders().get("ce-id").toString(), new Timestamp(messageEvent.getHeaders().getTimestamp()), messageEvent.getPayload());
             messageFallBackWriteRepository.saveMessageFB(mFB);
             }
         );
-        System.err.println(">>>ENVIAMOS EL MENSAJE A BBDD Y A LA COLA: " + messageEvent.getHeaders().getId().toString());
+        System.err.println(">>>ENVIAMOS EL MENSAJE A BBDD Y A LA COLA: " + messageEvent.getHeaders().get("ce-id").toString());
     }
 
 }

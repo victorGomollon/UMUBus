@@ -18,11 +18,11 @@ public class EventAckConsumer implements Consumer<Message<Event>> {
 	
     @Override
     public void accept(Message<Event> message) {
-    	System.err.println(">>>HEMOS PROCESADO EL MENSAJE: " + message.getHeaders().getId().toString());
+    	System.err.println(">>>HEMOS PROCESADO EL MENSAJE: " + message.getHeaders().get("ce-id").toString());
     	try {
-    		messageFallBackWriteRepository.deleteMessageFBById(message.getHeaders().getId().toString());
+    		messageFallBackWriteRepository.deleteMessageFBById(message.getHeaders().get("ce-id").toString());
     	}catch(EmptyResultDataAccessException e) {
-    		System.err.println("SE LA PEGA BIEN PEGADA");
+    		System.err.println("No existe el mensaje en BBDD " + e);
     	}
     }
 }

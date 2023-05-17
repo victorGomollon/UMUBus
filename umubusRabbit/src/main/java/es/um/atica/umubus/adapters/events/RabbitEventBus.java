@@ -45,7 +45,7 @@ public class RabbitEventBus extends RabbitProcessorEvent<Message<Event>> impleme
     			.setType(event.getType())
 				.setTime(OffsetDateTime.ofInstant(sendDate.toInstant(), ZoneId.systemDefault()))
     			.build();
-    	System.err.println(">>>ENVIAMOS EL MENSAJE A BBDD Y A LA COLA EN 2: " + messageEvent.getHeaders().getId().toString());
+    	System.err.println(">>>ENVIAMOS EL MENSAJE A BBDD Y A LA COLA EN 2: " + messageEvent.getHeaders().get("ce-id").toString());
     	addMessageEvent(messageEvent);
     }
 }
