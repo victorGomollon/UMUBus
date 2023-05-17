@@ -1,10 +1,9 @@
 package es.um.atica.umuexample.users.adapters.jpa;
 
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface JPAUsersReadRepository extends PagingAndSortingRepository<UserEntity,String>, JpaSpecificationExecutor<UserEntity>{
+public interface JPAUsersReadRepository extends JpaRepository<UserEntity,String> {
     
 }

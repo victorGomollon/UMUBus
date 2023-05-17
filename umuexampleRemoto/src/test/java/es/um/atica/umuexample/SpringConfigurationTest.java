@@ -41,13 +41,14 @@ public abstract class SpringConfigurationTest {
         @Override
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
             TestPropertySourceUtils.addInlinedPropertiesToEnvironment(configurableApplicationContext,
-                "spring.cloud.function.definition=eventProcessor;crearConsumer;crearConsumer2;actualizarConsumer;eliminarConsumer;crearMatConsumer",
+                "spring.cloud.function.definition=eventProcessor;crearConsumer;crearConsumer2;actualizarConsumer;eliminarConsumer;crearMatConsumer;ackConsumer",
                 "spring.cloud.stream.rabbit.bindings.eventProcessor-out-0.producer.routingKeyExpression=@eventTypeResolver.eventType(payload)",
                 "spring.cloud.stream.rabbit.bindings.crearConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.usuarios.domain.event.CrearUsuarioEvent",
                 "spring.cloud.stream.rabbit.bindings.crearConsumer2-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.usuarios.domain.event.CrearUsuarioEvent",
                 "spring.cloud.stream.rabbit.bindings.eliminarConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.usuarios.domain.event.EliminarUsuarioEvent",
                 "spring.cloud.stream.rabbit.bindings.actualizarConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.usuarios.domain.event.ActualizarUsuarioEvent",
                 "spring.cloud.stream.rabbit.bindings.crearMatConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.matriculas.domain.event.CrearMatriculaEvent",
+                "spring.cloud.stream.rabbit.bindings.ackConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.usuarios.domain.event.#",
                 "spring.rabbitmq.host=" + rabbitMQ.getHost(),
                 "spring.rabbitmq.port=" + rabbitMQ.getMappedPort(RABBITMQ_DEFAULT_PORT),
                 "spring.rabbitmq.username=" + rabbitMQ.getAdminUsername(),

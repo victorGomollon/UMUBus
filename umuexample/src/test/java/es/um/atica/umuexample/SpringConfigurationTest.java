@@ -41,12 +41,13 @@ public abstract class SpringConfigurationTest {
         @Override
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
             TestPropertySourceUtils.addInlinedPropertiesToEnvironment(configurableApplicationContext,
-                "spring.cloud.function.definition=eventProcessor;crearConsumer;crearConsumer2;actualizarConsumer;eliminarConsumer",
+                "spring.cloud.function.definition=eventProcessor;crearConsumer;crearConsumer2;actualizarConsumer;eliminarConsumer;ackConsumer",
                 "spring.cloud.stream.rabbit.bindings.eventProcessor-out-0.producer.routingKeyExpression=@eventTypeResolver.eventType(payload)",
                 "spring.cloud.stream.rabbit.bindings.crearConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.users.domain.event.CrearUsuarioEvent",
                 "spring.cloud.stream.rabbit.bindings.crearConsumer2-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.users.domain.event.CrearUsuarioEvent",
                 "spring.cloud.stream.rabbit.bindings.eliminarConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.users.domain.event.EliminarUsuarioEvent",
                 "spring.cloud.stream.rabbit.bindings.actualizarConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent",
+                "spring.cloud.stream.rabbit.bindings.ackConsumer-in-0.consumer.bindingRoutingKey=events.1.es.um.atica.umuexample.users.domain.event.#",
                 "spring.rabbitmq.host=" + rabbitMQ.getHost(),
                 "spring.rabbitmq.port=" + rabbitMQ.getMappedPort(RABBITMQ_DEFAULT_PORT),
                 "spring.rabbitmq.username=" + rabbitMQ.getAdminUsername(),

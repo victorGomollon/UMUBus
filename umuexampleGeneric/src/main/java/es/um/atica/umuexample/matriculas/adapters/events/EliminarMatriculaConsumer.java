@@ -7,7 +7,6 @@ import es.um.atica.umuexample.matriculas.domain.event.EliminarMatriculaEvent;
 
 @Component
 public class EliminarMatriculaConsumer {
-
 	
     @EventListener
     public void accept(EliminarMatriculaEvent event) {
