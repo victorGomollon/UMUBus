@@ -1,8 +1,10 @@
 package es.um.atica.umuexample.users.domain.event;
 
 import es.um.atica.umuexample.users.domain.model.Usuario;
+import lombok.Getter;
 import es.um.atica.umubus.domain.events.Event;
 
+@Getter
 public class EliminarUsuarioEvent extends Event {
 
     private String userId;
@@ -20,8 +22,6 @@ public class EliminarUsuarioEvent extends Event {
         return new EliminarUsuarioEvent(user.getId());
     }
 
-    public String getUserId() { return userId; }
-    
     @Override
     public String toString() { 
         return super.toString() + String.format("[userId:%s]",userId);

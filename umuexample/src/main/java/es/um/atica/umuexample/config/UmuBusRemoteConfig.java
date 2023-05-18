@@ -15,11 +15,9 @@ import es.um.atica.umubus.adapters.events.EventAckConsumer;
 import es.um.atica.umubus.adapters.events.RabbitEventBus;
 import es.um.atica.umubus.domain.events.Event;
 import es.um.atica.umubus.domain.events.EventBus;
-import es.um.atica.umuexample.users.adapters.events.ActualizarUsuarioConsumer;
 import es.um.atica.umuexample.users.adapters.events.CrearUsuarioConsumer;
 import es.um.atica.umuexample.users.adapters.events.CrearUsuarioConsumerOther;
 import es.um.atica.umuexample.users.adapters.events.EliminarUsuarioConsumer;
-import es.um.atica.umuexample.users.domain.event.ActualizarUsuarioEvent;
 import es.um.atica.umuexample.users.domain.event.CrearUsuarioEvent;
 import es.um.atica.umuexample.users.domain.event.EliminarUsuarioEvent;
 
@@ -36,9 +34,6 @@ public class UmuBusRemoteConfig {
 
 	@Autowired
 	private CrearUsuarioConsumerOther crearUsuarioConsumerOther;
-
-	@Autowired
-	private ActualizarUsuarioConsumer actualizarUsuarioConsumer;
 
 	@Autowired
 	private EliminarUsuarioConsumer eliminarUsuarioConsumer;
@@ -58,11 +53,6 @@ public class UmuBusRemoteConfig {
 		return crearUsuarioConsumerOther;
 	}
 
-	@Bean
-	public Consumer<Message<ActualizarUsuarioEvent>> actualizarConsumer() {
-		return actualizarUsuarioConsumer;
-	}
-	
 	@Bean
 	public Consumer<Message<EliminarUsuarioEvent>> eliminarConsumer() {
 		return eliminarUsuarioConsumer;

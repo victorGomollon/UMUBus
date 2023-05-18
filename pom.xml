@@ -13,10 +13,10 @@
 	
 	<modules>
 		<module>umubus</module>
-		<module>umubusRabbit</module>
+		<module>umubus-rabbit</module>
 		<module>umuexample</module>
-		<module>umuexampleGeneric</module>
-		<module>umuexampleLocal</module>
-		<module>umuexampleRemoto</module>
+		<module>umuexample-generic</module>
+		<module>umuexample-local</module>
+		<module>umuexample-remoto</module>
 	</modules>
 </project>

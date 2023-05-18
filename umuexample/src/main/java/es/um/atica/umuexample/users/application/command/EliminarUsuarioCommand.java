@@ -1,7 +1,9 @@
 package es.um.atica.umuexample.users.application.command;
 
 import es.um.atica.umubus.domain.cqrs.Command;
+import lombok.Getter;
 
+@Getter
 public class EliminarUsuarioCommand extends Command {
     
     private String id;
@@ -14,7 +16,5 @@ public class EliminarUsuarioCommand extends Command {
         // Validate Command Data for UI
         return new EliminarUsuarioCommand(id);
     }
-
-    public String getId() { return id; }
 
 }

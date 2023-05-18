@@ -7,12 +7,21 @@ import javax.persistence.Table;
 
 import es.um.atica.umuexample.users.domain.factory.UsuarioFactory;
 import es.um.atica.umuexample.users.domain.model.Usuario;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name="USERS",schema="PRUEBAS")
 public class UserEntity {
+
+    @Id
+    @Column(name = "identificador")
     private String id;
+    @Column(name = "nombre")
     private String name;
+    @Column(name = "edad")
     private int age;
 
     private UserEntity() {}
@@ -33,18 +42,4 @@ public class UserEntity {
             this.name,
             this.age);
     }
-
-    @Id
-    @Column(name = "identificador")
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-
-    @Column(name = "nombre")
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    @Column(name = "edad")
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
-
 }

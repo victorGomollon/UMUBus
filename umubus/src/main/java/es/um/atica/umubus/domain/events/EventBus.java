@@ -2,12 +2,13 @@ package es.um.atica.umubus.domain.events;
 
 import java.util.Collection;
 import java.sql.Timestamp;
-import es.um.atica.umubus.domain.ddd.AggregateRoot;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import es.um.atica.umubus.domain.model.AggregateRoot;
 
 public interface EventBus {
 

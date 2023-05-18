@@ -1,8 +1,10 @@
 package es.um.atica.umuexample.users.domain.event;
 
 import es.um.atica.umuexample.users.domain.model.Usuario;
+import lombok.Getter;
 import es.um.atica.umubus.domain.events.Event;
 
+@Getter
 public class ActualizarUsuarioEvent extends Event {
 
     private String userId;
@@ -21,10 +23,6 @@ public class ActualizarUsuarioEvent extends Event {
     public static ActualizarUsuarioEvent of (Usuario user, String changelog) {
         return new ActualizarUsuarioEvent(user.getId(), changelog);
     }
-
-    public String getUserId() { return userId; }
-
-    public String getChangelog() { return changelog; }
     
     @Override
     public String toString() { 

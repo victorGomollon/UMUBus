@@ -1,7 +1,9 @@
 package es.um.atica.umuexample.users.application.command;
 
 import es.um.atica.umubus.domain.cqrs.SyncCommand;
+import lombok.Getter;
 
+@Getter
 public class CrearUsuarioCommand extends SyncCommand<Void> {
     
     private String id;
@@ -16,9 +18,4 @@ public class CrearUsuarioCommand extends SyncCommand<Void> {
         // Validate Command Data for UI
         return new CrearUsuarioCommand(id, name, age);
     }
-
-    public String getId() { return id; }
-    public String getName() { return name; }
-    public int getAge() { return age; }
-
 }

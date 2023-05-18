@@ -2,7 +2,9 @@ package es.um.atica.umubus.domain.model;
 
 import java.sql.Timestamp;
 import es.um.atica.umubus.domain.events.Event;
+import lombok.Getter;
 
+@Getter
 public class MessageFallBack {
 
     private String id;
@@ -16,8 +18,4 @@ public class MessageFallBack {
     public static MessageFallBack of (String id, Timestamp sendDate, Event event) {
         return new MessageFallBack(id, sendDate, event);
     }
-
-    public String getId() { return id; }
-    public Timestamp getSendDate() { return sendDate; }
-    public Event getEvent() { return event; }
 }
