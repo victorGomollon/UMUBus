@@ -15,6 +15,6 @@ public class CrearMatriculaConsumer implements Consumer<Message<Event>> {
     public void accept(Message<Event> message) {
     	Event event = message.getPayload();
     	log.info(">>>EVENTO MATRICULA CREATED Consumer: " + event);
-    	log.info(">>>EVENTO MATRICULA CREATED Consumer para la asignatura: " + event.getMetaData().get("asignatura"));
+    	log.info(">>>EVENTO MATRICULA CREATED Consumer para la asignatura: " + event.getMetaData().get("matriculaId"));
     }
 }

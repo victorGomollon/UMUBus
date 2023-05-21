@@ -47,14 +47,14 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- Retry -->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
-		</dependency>
+		</dependency>-->
 		<!-- Fin Retry -->
 		<dependency>
 			<groupId>com.h2database</groupId>
