@@ -15,7 +15,9 @@ import es.um.atica.umubus.adapters.events.EventAckConsumer;
 import es.um.atica.umubus.adapters.events.RabbitEventBus;
 import es.um.atica.umubus.domain.events.Event;
 import es.um.atica.umubus.domain.events.EventBus;
+import es.um.atica.umuexample.matriculas.adapters.events.CrearMatriculaConsumer;
 import es.um.atica.umuexample.matriculas.adapters.events.CrearUsuarioConsumer;
+import es.um.atica.umuexample.matriculas.domain.event.CrearMatriculaEvent;
 
 @Configuration
 @ComponentScan(basePackages = {"es.um.atica.umuexample","es.um.atica.umubus"})
@@ -27,18 +29,26 @@ public class UmuBusRemoteConfig {
 	private RabbitEventBus eventBus;
 
 	@Autowired
-	private CrearUsuarioConsumer crearMatriculaConsumer;
+	private CrearUsuarioConsumer crearUsuarioConsumer;
 
+	@Autowired
+	private CrearMatriculaConsumer crearMatriculaConsumer;
+	
 	@Bean
 	public Supplier<Message<Event>> eventProcessor() {
 		return eventBus;
 	}
 
 	@Bean
-	public Consumer<Message<Event>> crearConsumer() {
-		return crearMatriculaConsumer;
+	public Consumer<Message<Event>> usuarioCrearConsumer() {
+		return crearUsuarioConsumer;
 	}
 
+	@Bean
+	public Consumer<Message<CrearMatriculaEvent>> matCrearConsumer() {
+		return crearMatriculaConsumer;
+	}
+	
 	@Bean
 	public EventBus eventTypeResolver() {
 		return eventBus;
